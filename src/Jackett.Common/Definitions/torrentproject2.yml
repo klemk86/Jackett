@@ -1,5 +1,5 @@
 ---
-site: torrentproject2
+id: torrentproject2
 name: TorrentProject2
 description: "TorrentProject2 is a Public torrent meta-search engine"
 language: en-us
@@ -65,8 +65,9 @@ download:
   attribute: href
   filters:
     - name: replace
-      args: ["https://mylink.me.uk/?url=" ,""]
-      args: ["https://mylink.cx/?url=" ,""]
+      args: ["https://mylink.me.uk/?url=", ""]
+    - name: replace
+      args: ["https://mylink.cx/?url=", ""]
     - name: urldecode
 
 search:

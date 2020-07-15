@@ -1,5 +1,5 @@
 ---
-site: linkomanija
+id: linkomanija
 name: LinkoManija
 description: "LinkoManija is an LITHUANIAN Private site for TV / MOVIES / GENERAL"
 language: lt-lt
@@ -112,5 +112,3 @@ search:
           args: " +01:00"
         - name: dateparse
           args: "2006-01-0215:04:05 -07:00"
-
-

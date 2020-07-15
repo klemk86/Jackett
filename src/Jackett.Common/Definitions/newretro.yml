@@ -1,5 +1,5 @@
 ---
-site: newretro
+id: newretro
 name: The New Retro
 description: "The New Retro is a GERMAN Private Torrent Tracker for MOVIES / GENERAL"
 language: de-de
@@ -68,7 +68,7 @@ login:
     secure_pin: "{{ .Config.pin }}"
     returnto: "/"
   error:
-  - selector: table.tableinborder:contains("Anmeldung Gescheitert!") > tbody > tr > td.tablea
+    - selector: table.tableinborder:contains("Anmeldung Gescheitert!") > tbody > tr > td.tablea
   test:
     path: usercp.php
 

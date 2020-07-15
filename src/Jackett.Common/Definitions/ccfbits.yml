@@ -1,5 +1,5 @@
 ---
-site: ccfbits
+id: ccfbits
 name: CCFBits
 description: "CCFBits is a CHINESE Private Torrent Tracker for HD MOVIES / TV"
 language: zh-cn
@@ -118,7 +118,7 @@ search:
       attribute: href
     imdb:
       optional: true
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
     files:
       selector: a[href$="&filelist=1"]

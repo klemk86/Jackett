@@ -1,5 +1,5 @@
 ---
-site: firebit
+id: firebit
 name: FireBit
 description: "FireBit is an UKRAINIAN / RUSSIAN Public Torrent Tracker for MOVIES / TV / GENERAL"
 language: ru-ru
@@ -8,11 +8,11 @@ encoding: UTF-8
 links:
   - https://firebit.net/
   - https://firebit.info/
-  - https://firebit.name/
   - https://firebit.pro/
   - https://firebit.club/
-  - https://firebit.biz/
 legacylinks:
+  - https://firebit.name/
+  - https://firebit.biz/
   - http://firebit.net/
   - http://firebit.info/
   - http://firebit.name/
@@ -32,7 +32,9 @@ caps:
     "Мобилка Игры": PC/Phone-Other
     "Литература": Books
     "Игры": PC/Games
+    "Игры Мобилка": PC/Games
     "Фильмы": Movies
+    "Фильмы Видео": Movies
     "Фильмы Сериалы": Movies
     "Фильмы Скоро на трекере": Movies
     "Видео": Movies
@@ -88,6 +90,9 @@ search:
       attribute: href
     size:
       selector: td.td-size, li.meta-size
+      filters:
+        - name: replace
+          args: ["-", "0 B"]
     date:
       selector: td:nth-child(5), li.meta-date
       filters:

@@ -1,5 +1,5 @@
 ---
-site: wdt
+id: wdt
 name: WDT
 description: "Wrestling Desires Torrents (Ultimate Wrestling Torrents) is a Private Torrent Tracker for PROFESSIONAL WRESTLING / MMA"
 language: en-us
@@ -82,6 +82,10 @@ settings:
     options:
       "desc": "desc"
       "asc": "asc"
+  - name: info_results
+    type: info
+    label: Search results
+    default: "If you are getting the error <b>Login Failed, got redirected</b> then access the site with your browser and <b>mark as read</b> all PMs."
 
 login:
   path: login.php

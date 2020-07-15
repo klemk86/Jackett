@@ -1,5 +1,5 @@
 ---
-site: ebookparadijs
+id: ebookparadijs
 name: EbookParadijs
 description: "EbookParadijs is a DUTCH Private Tracker for EBOOKS"
 language: nl-NL
@@ -121,7 +121,7 @@ search:
         - name: replace
           args: ["december", "December"]
         - name: re_replace
-          args: ["\\s*om\\s*"," "]
+          args: ["\\s*om\\s*", " "]
         - name: dateparse
           args: "2 January 2006 15:04:05"
     seeders:

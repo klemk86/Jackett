@@ -1,5 +1,5 @@
 ---
-site: hddisk
+id: hddisk
 name: HDDisk
 description: "HDDisk (HDD) is a CHINESE Private Torrent Tracker for HD MOVIES / TV"
 language: zh-cn
@@ -51,6 +51,10 @@ settings:
     options:
       "desc": "desc"
       "asc": "asc"
+  - name: info_tpp
+    type: info
+    label: Results Per Page
+    default: For best results, change the <b>Torrents per page:</b> setting to <b>100</b> on your account profile.
 
 login:
   path: login.php
@@ -115,7 +119,7 @@ search:
       attribute: href
     imdb:
       optional: true
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
     date:
       # time type: time elapsed (default)

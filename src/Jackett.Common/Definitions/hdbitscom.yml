@@ -1,5 +1,5 @@
 ---
-site: hdbitscom
+id: hdbitscom
 name: HD-Bits.com
 description: "HD tracker"
 language: en-us
@@ -71,7 +71,7 @@ search:
       selector: a[href^="torrents.php?id="]
       attribute: href
     imdb:
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       optional: true
       attribute: href
     banner:

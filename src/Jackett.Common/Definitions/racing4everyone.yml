@@ -1,5 +1,5 @@
 ---
-site: racing4everyone
+id: racing4everyone
 name: Racing4Everyone (R4E)
 description: "Racing4Everyone (R4E) is a Private Torrent Tracker for RACING"
 language: en-us
@@ -156,12 +156,12 @@ search:
           args: (\d+)
     imdb:
       optional: true
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
     date:
       selector: time
       filters:
-          # translations for Turkish|Estonian|Danish|Italian|Polish|Norwegian|Portuguese|Czech|Russian|Romanian|Spanish|French|German|Bulgarian|Dutch|Chinese
+        # translations for Turkish|Estonian|Danish|Italian|Polish|Norwegian|Portuguese|Czech|Russian|Romanian|Spanish|French|German|Bulgarian|Dutch|Chinese
         - name: re_replace
           args: ["(?i)(önce|tagasi|geleden|fa|temu|siden|há|atrás|nazpět|назад|acum|în urmă|hace|il y a|vor|преди|前)", " ago"]
         - name: re_replace

@@ -1,5 +1,5 @@
 ---
-site: torrentleech-pl
+id: torrentleech-pl
 name: Torrentleech.pl
 description: "Torrentleech.pl is a POLISH Private Torrent Tracker for 0DAY / GENERAL"
 language: pl-pl
@@ -50,7 +50,12 @@ settings:
   - name: info
     type: info
     label: How to get the Cookie
-    default: "<ol><li>Login to this tracker with your browser<li>Open the <b>DevTools</b> panel by pressing <b>F12</b><li>Select the <b>Network</b> tab<li>Click on the <b>Doc</b> button<li>Refresh the page by pressing <b>F5</b><li>Select the <b>Headers</b> tab<li>Find <b>'cookie:'</b> in the <b>Request Headers</b> section<li><b>Select</b> and <b>Copy</b> the whole cookie string <i>(everything after 'cookie: ')</i> and <b>Paste</b> here.</ol>"
+    default: "<ol><li>Login to this tracker with your browser<li>Open the <b>DevTools</b> panel by pressing <b>F12</b><li>Select the <b>Network</b> tab<li>Click on the <b>Doc</b> button (Chrome Browser) or <b>HTML</b> button (FireFox)<li>Refresh the page by pressing <b>F5</b><li>Click on the first row entry<li>Select the <b>Headers</b> tab on the Right panel<li>Find <b>'cookie:'</b> in the <b>Request Headers</b> section<li><b>Select</b> and <b>Copy</b> the whole cookie string <i>(everything after 'cookie: ')</i> and <b>Paste</b> here.</ol>"
+
+  - name: drop_polish_prefix
+    type: checkbox
+    label: Drop the Polish title prefix
+    default: false
 #    - name: sort
 #      type: select
 #      label: Sort requested from site
@@ -111,8 +116,16 @@ search:
       filters:
         - name: querystring
           args: cat
-    title:
+    title_raw:
       selector: a[href^="details.php?id="]
+    title_stripped:
+      selector: a[href^="details.php?id="]
+      filters:
+        - name: re_replace
+          args: ["^(.*/)(.*)$", "$2"]
+        - name: trim
+    title:
+      text: "{{ if .Config.drop_polish_prefix }}{{ .Result.title_stripped }}{{ else }}{{ .Result.title_raw }}{{ end }}"
     details:
       selector: a[href^="details.php?id="]
       attribute: href
@@ -121,7 +134,7 @@ search:
       attribute: href
     imdb:
       optional: true
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
     description:
       text: ""

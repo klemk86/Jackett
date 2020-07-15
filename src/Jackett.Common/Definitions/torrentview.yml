@@ -1,5 +1,5 @@
 ---
-site: torrentview
+id: torrentview
 name: TorrentView
 description: "Torrent View  (토렌트뷰) is a Public KOREAN tracker for Korean media."
 language: ko-KR
@@ -7,7 +7,7 @@ type: public
 encoding: UTF-8
 followredirect: true
 links:
-  - https://torrentview10.net/
+  - https://torrentview16.net/
 legacylinks:
   - https://torrentview.net/
   - https://torrentview3.net/
@@ -17,6 +17,12 @@ legacylinks:
   - https://torrentview7.net/
   - https://torrentview8.net/
   - https://torrentview9.net/
+  - https://torrentview10.net/
+  - https://torrentview11.net/
+  - https://torrentview12.net/
+  - https://torrentview13.net/
+  - https://torrentview14.net/
+  - https://torrentview15.net/
 
 caps:
   categorymappings:

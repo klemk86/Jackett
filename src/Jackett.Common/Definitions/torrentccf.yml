@@ -1,5 +1,5 @@
 ---
-site: torrentccf
+id: torrentccf
 name: TorrentCCF
 description: "TorrentCCF (TCCF) is a CHINESE Private Torrent Tracker for HD MOVIES / TV"
 language: zh-cn
@@ -63,6 +63,10 @@ settings:
     options:
       "desc": "desc"
       "asc": "asc"
+  - name: info_tpp
+    type: info
+    label: Results Per Page
+    default: For best results, change the <b>Torrents per page:</b> setting to <b>100</b> on your account profile.
 
 login:
   path: login.php
@@ -75,9 +79,12 @@ login:
   inputs:
     username: "{{ .Config.username }}"
     password: "{{ .Config.password }}"
+    logout: ""
+    securelogin: ""
+    ssl: yes
+    trackerssl: yes
   error:
     - selector: td.embedded:has(h2:contains("失败"))
-    - selector: td.embedded:has(h2:contains("登录失败"))
   test:
     path: index.php
     selector: a[href="logout.php"]

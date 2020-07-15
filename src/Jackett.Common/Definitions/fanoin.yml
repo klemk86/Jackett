@@ -1,5 +1,5 @@
 ---
-site: fanoin
+id: fanoin
 name: FANO.IN
 description: "Fano.in is a LATVIAN Private Torrent Tracker for 0DAY / GENERAL"
 language: lv-lv
@@ -129,7 +129,7 @@ search:
         - name: replace
           args: ["details.php", "download.php"]
     imdb:
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
     size:
       selector: td:nth-child(5)

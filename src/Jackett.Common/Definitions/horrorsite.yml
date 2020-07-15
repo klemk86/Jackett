@@ -1,5 +1,5 @@
 ---
-site: horrorsite
+id: horrorsite
 name: Horror Site
 description: "Horror Site is a Hungarian Private site for MOVIES / TV"
 language: hu-hu
@@ -76,7 +76,7 @@ login:
     - selector: table.browse:contains("hiba")
   test:
     path: /
-    selector: a[href="/logout.php"]
+    selector: a[href$="/logout.php"]
 
 search:
   paths:
@@ -114,7 +114,7 @@ search:
       selector: a[href^="/download.php/"]
       attribute: href
     imdb:
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       optional: true
       attribute: href
     banner:

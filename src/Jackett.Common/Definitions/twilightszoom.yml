@@ -1,5 +1,5 @@
 ---
-site: twilightszoom
+id: twilightszoom
 name: Twilights Zoom
 description: "Twilights Zoom is a Private Torrent Tracker for MUSIC"
 language: en-us
@@ -24,6 +24,7 @@ caps:
     - {id: 20, cat: Audio, desc: "Comedy"}
     - {id: 18, cat: Audio, desc: "Country"}
     - {id: 4, cat: Audio, desc: "Dance"}
+    - {id: 84, cat: Audio, desc: "Death Metal"}
     - {id: 62, cat: Audio, desc: "Discography"}
     - {id: 40, cat: Audio, desc: "DJ Tools"}
     - {id: 60, cat: Audio, desc: "DMC"}
@@ -159,7 +160,7 @@ search:
       attribute: onmouseover
       filters:
         - name: regexp
-          args: "src=\\\\\'(.+?)\\\\\'"
+          args: "src=\\\\'(.+?)\\\\'"
         - name: replace
           args: ["./pic/noposter.png", ""]
     files:

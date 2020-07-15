@@ -1,5 +1,5 @@
 ---
-site: topnow
+id: topnow
 name: TopNow
 description: "TopNow is a Public torrent site for TV / MOVIES"
 language: en-us
@@ -24,9 +24,7 @@ settings: []
 search:
   paths:
     # https://topnow.se/index.php?search=
-    - path: index.php
-  inputs:
-    search: "{{ .Keywords }}"
+    - path: "index.php{{if .Keywords}}?search={{ .Keywords }}{{else}}{{end}}"
   keywordsfilters:
     # the site uses % for wildcard
     - name: re_replace
@@ -35,6 +33,8 @@ search:
   rows:
     # old cards do not have a download link
     selector: div.grid-item:has(a[href^="/download.php?torrent="])
+    filters:
+      - name: andmatch
 
   fields:
     category:

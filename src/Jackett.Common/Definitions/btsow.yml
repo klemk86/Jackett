@@ -1,15 +1,18 @@
 ---
-site: btsow
+id: btsow
 name: BTSOW
 description: "BTSOW is a Public torrent indexer"
 language: en-us
 type: public
 encoding: UTF-8
 links:
-  - https://btsow.club/
+  - https://btsow.space/
 legacylinks:
   - https://btos.pw/
   - https://btio.pw/
+  - https://btsow.club/
+  - https://bteve.com/
+  - https://btsow.fun/
 
 caps:
   categories:

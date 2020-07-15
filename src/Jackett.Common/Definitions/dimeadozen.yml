@@ -1,5 +1,5 @@
 ---
-site: dimeadozen
+id: dimeadozen
 name: DimeADozen
 description: "DimeADozen (EzTorrent) is a Semi-Private Torrent Tracker for BOOTLEG MUSIC"
 language: en
@@ -105,7 +105,7 @@ download:
 
 search:
   paths:
-  # http://www.dimeadozen.org/torrents-browse.php?search=%2Btalk+%2Bparis&cat=0&incldead=1&searchscope=1
+    # http://www.dimeadozen.org/torrents-browse.php?search=%2Btalk+%2Bparis&cat=0&incldead=1&searchscope=1
     - path: torrents-browse.php
   inputs:
     search: "{{ .Keywords }}"

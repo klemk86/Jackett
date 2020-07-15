@@ -1,5 +1,5 @@
 ---
-site: ilcorsaronero
+id: ilcorsaronero
 name: Il Corsaro Nero
 description: "Il Corsaro Nero is an ITALIAN Public site for TV / MOVIES / GENERAL"
 language: it-it
@@ -7,7 +7,7 @@ type: public
 encoding: Windows-1252
 followredirect: true
 links:
-  - https://ilcorsaronero.xyz/
+  - https://ilcorsaronero.link/
   - https://ilcorsaronero.fun/
   - https://ilcorsaronero.pro/
 legacylinks:
@@ -20,7 +20,9 @@ legacylinks:
   - https://ilcorsaronero.pw/
   - https://ilcorsaronero.unblockit.pro/
   - https://ilcorsaronero.unblockit.one/
-  - https://ilcorsaronero.unblockit.me/ # test and empty search fails, redirects to ilcorsaronero.fun
+  - https://ilcorsaronero.xyz/
+  - https://ilcorsaronero.unblockit.me/
+  - https://ilcorsaronero.unblockit.pw/ # not working, likely to be removed soon
 
 caps:
   categorymappings:

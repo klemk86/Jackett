@@ -1,5 +1,5 @@
 ---
-site: torrentdb
+id: torrentdb
 name: TorrentDB
 description: "TorrentDB - Private site for Live Concerts with Strict Quality Control"
 language: en-us
@@ -71,7 +71,7 @@ ratio:
 
 search:
   paths:
-  # https://torrentdb.net/filter/torrents?&search=ring&categories[]=1&freeleech=1&doubleupload=1&sorting=created_at&direction=desc&qty=100
+    # https://torrentdb.net/filter/torrents?&search=ring&categories[]=1&freeleech=1&doubleupload=1&sorting=created_at&direction=desc&qty=100
     - path: filter/torrents
   inputs:
     $raw: "{{ range .Categories }}categories[]={{.}}&{{end}}"
@@ -114,7 +114,7 @@ search:
       selector: td:nth-child(10)
     imdb:
       optional: true
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
     downloadvolumefactor:
       case:

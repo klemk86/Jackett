@@ -60,19 +60,20 @@ namespace Jackett.Common.Indexers
             {"greys anatomy", "grey's anatomy"}
         };
 
-        public BJShare(IIndexerConfigurationService configService, WebClient wc, Logger l, IProtectionService ps) :
-            base("BJ-Share",
-                 description: "A brazilian tracker.",
-                 link: "https://bj-share.info/",
-                 caps: new TorznabCapabilities
-                 {
-                     SupportsImdbMovieSearch = true
-                 },
-                 configService: configService,
-                 client: wc,
-                 logger: l,
-                 p: ps,
-                 configData: new ConfigurationDataBasicLoginWithRSSAndDisplay())
+        public BJShare(IIndexerConfigurationService configService, WebClient wc, Logger l, IProtectionService ps)
+            :  base(id: "bjshare",
+                    name: "BJ-Share",
+                    description: "A brazilian tracker.",
+                    link: "https://bj-share.info/",
+                    caps: new TorznabCapabilities
+                    {
+                        SupportsImdbMovieSearch = true
+                    },
+                    configService: configService,
+                    client: wc,
+                    logger: l,
+                    p: ps,
+                    configData: new ConfigurationDataBasicLoginWithRSSAndDisplay())
         {
             Encoding = Encoding.UTF8;
             Language = "pt-br";
@@ -218,6 +219,11 @@ namespace Jackett.Common.Indexers
             return title;
         }
 
+        private bool IsSessionIsClosed(WebClientStringResult result)
+        {
+            return result.IsRedirect && result.RedirectingTo.Contains("login.php");
+        }
+
         private string FixSearchTerm(TorznabQuery query)
         {
             if (query.IsImdbQuery)
@@ -252,7 +258,7 @@ namespace Jackett.Common.Indexers
                 queryCollection.Add("filter_cat[" + cat + "]", "1");
             searchUrl += "?" + queryCollection.GetQueryString();
             var results = await RequestStringWithCookies(searchUrl);
-            if (results.IsRedirect)
+            if (IsSessionIsClosed(results))
             {
                 // re-login
                 await ApplyConfiguration(null);
@@ -328,10 +334,6 @@ namespace Jackett.Common.Indexers
                         release.Description = release.Description.Replace("4K", "2160p");
                         release.Description = release.Description.Replace("SD", "480p");
                         release.Description = release.Description.Replace("Dual Áudio", "Dual");
-                        // If it ain't nacional there will be the type of the audio / original audio
-                        if (!release.Description.Contains("Nacional"))
-                            release.Description = Regex.Replace(
-                                release.Description, @"(Dual|Legendado|Dublado) \/ (.*?) \/", "$1 /");
 
                         // Adjust the description in order to can be read by Radarr and Sonarr
                         var cleanDescription = release.Description.Trim().TrimStart('[').TrimEnd(']');
@@ -373,7 +375,7 @@ namespace Jackett.Common.Indexers
                     }
                     catch (Exception ex)
                     {
-                        logger.Error($"{ID}: Error while parsing row '{row.OuterHtml}': {ex.Message}");
+                        logger.Error($"{Id}: Error while parsing row '{row.OuterHtml}': {ex.Message}");
                     }
             }
             catch (Exception ex)
@@ -388,7 +390,7 @@ namespace Jackett.Common.Indexers
         {
             var releases = new List<ReleaseInfo>();
             var results = await RequestStringWithCookies(TodayUrl);
-            if (results.IsRedirect)
+            if (IsSessionIsClosed(results))
             {
                 // re-login
                 await ApplyConfiguration(null);
@@ -502,7 +504,7 @@ namespace Jackett.Common.Indexers
                     }
                     catch (Exception ex)
                     {
-                        logger.Error($"{ID}: Error while parsing row '{row.OuterHtml}': {ex.Message}");
+                        logger.Error($"{Id}: Error while parsing row '{row.OuterHtml}': {ex.Message}");
                     }
             }
             catch (Exception ex)

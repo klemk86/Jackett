@@ -1,5 +1,5 @@
 ---
-site: torlock
+id: torlock
 name: Torlock
 description: "Torlock is a torrent search site that lists verified torrents only for TV series and movies"
 language: en-us
@@ -10,11 +10,13 @@ links:
   - https://www.torlock.com/
   - https://www.torlock2.com/
   - https://www.torlock.icu/
-  - https://torlock.unblockit.me/
+  - https://torlock.unblockit.id/
 legacylinks:
   - https://torlock.com/
   - https://torlock.unblockit.pro/
   - https://torlock.unblockit.one/
+  - https://torlock.unblockit.me/
+  - https://torlock.unblockit.pw/
 
 caps:
   categorymappings:
@@ -93,12 +95,12 @@ search:
       selector: td:nth-child(1) > div > a[href^="/torrent/"]
       attribute: href
       filters:
-      - name: replace
-        args: ["/torrent/", "/tor/"]
-      - name: regexp
-        args: (^/tor/\d*)
-      - name: append
-        args: ".torrent"
+        - name: replace
+          args: ["/torrent/", "/tor/"]
+        - name: regexp
+          args: (^/tor/\d*)
+        - name: append
+          args: ".torrent"
     date:
       selector: td:nth-child(2):contains("/")
       optional: true

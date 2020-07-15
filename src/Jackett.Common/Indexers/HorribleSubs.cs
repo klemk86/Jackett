@@ -28,7 +28,8 @@ namespace Jackett.Common.Indexers
         };
 
         public HorribleSubs(IIndexerConfigurationService configService, WebClient wc, Logger l, IProtectionService ps)
-            : base("Horrible Subs",
+            : base(id: "horriblesubs",
+                   name: "Horrible Subs",
                    description: "HorribleSubs - So bad yet so good",
                    link: "https://horriblesubs.info/",
                    caps: new TorznabCapabilities(TorznabCatType.TVAnime),
@@ -71,7 +72,7 @@ namespace Jackett.Common.Indexers
             };
 
             var searchUrl = ApiEndpoint + "?" + queryCollection.GetQueryString();
-            var response = await RequestStringWithCookiesAndRetry(searchUrl, string.Empty);
+            var response = await RequestStringWithCookiesAndRetry(searchUrl);
 
             try
             {
@@ -111,7 +112,7 @@ namespace Jackett.Common.Indexers
             };
 
             var searchUrl = ApiEndpoint + "?" + queryCollection.GetQueryString();
-            var response = await RequestStringWithCookiesAndRetry(searchUrl, string.Empty);
+            var response = await RequestStringWithCookiesAndRetry(searchUrl);
 
             try
             {
@@ -145,7 +146,7 @@ namespace Jackett.Common.Indexers
             var releases = new List<ReleaseInfo>();
             var parser = new HtmlParser();
 
-            var response = await RequestStringWithCookiesAndRetry(resultUrl, string.Empty);
+            var response = await RequestStringWithCookiesAndRetry(resultUrl);
             await FollowIfRedirect(response);
 
             try
@@ -167,7 +168,7 @@ namespace Jackett.Common.Indexers
                     var nextId = 0;
                     while (true)
                     {
-                        var showApiResponse = await RequestStringWithCookiesAndRetry(apiUrl + "&nextid=" + nextId, string.Empty);
+                        var showApiResponse = await RequestStringWithCookiesAndRetry(apiUrl + "&nextid=" + nextId);
                         var showApiDom = parser.ParseDocument(showApiResponse.Content);
                         var releaseRowResults = showApiDom.QuerySelectorAll("div.rls-info-container");
                         rows.AddRange(releaseRowResults);

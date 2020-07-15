@@ -1,5 +1,5 @@
 ---
-site: muziekfabriek
+id: muziekfabriek
 name: MuziekFabriek
 description: "MuziekFabriek is a DUTCH Semi-Private Torrent Tracker for MUSIC"
 language: nl-NL
@@ -65,17 +65,17 @@ search:
       - name: andmatch
 
   fields:
-    title:
-      selector: a[href^="details.php?id="]
-    details:
-      selector: a[href^="details.php?id="]
-      attribute: href
     category:
       selector: a[href^="browse.php?cat="]
       attribute: href
       filters:
         - name: querystring
           args: cat
+    title:
+      selector: a[href^="details.php?id="]
+    details:
+      selector: a[href^="details.php?id="]
+      attribute: href
     download:
       selector: a[href^="download.php?id="]
       attribute: href
@@ -98,7 +98,7 @@ search:
         - name: regexp
           args: (\d+)
     date:
-      selector: td:nth-child(4) table tr:nth-child(2) td:nth-child(3)
+      selector: td:nth-child(4) table tr:nth-child(2) td:last-child
       filters:
         - name: replace
           args: ["januari", "January"]
@@ -125,7 +125,7 @@ search:
         - name: replace
           args: ["december", "December"]
         - name: re_replace
-          args: ["\\s*om\\s*"," "]
+          args: ["\\s*om\\s*", " "]
         - name: dateparse
           args: "2 January 2006 15:04:05"
     seeders:

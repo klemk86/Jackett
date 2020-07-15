@@ -1,5 +1,5 @@
 ---
-site: thepiratebay
+id: thepiratebay
 name: The Pirate Bay
 description: "Pirate Bay (TPB) is the galaxy’s most resilient Public BitTorrent site"
 language: en-us
@@ -7,24 +7,13 @@ type: public
 encoding: UTF-8
 followredirect: true
 links:
-  - https://thepiratebay.vip/
   - https://thepiratebay0.org/
   - https://thepiratebay10.org/
   - https://pirateproxy.live/
   - https://thehiddenbay.com/
   - https://thepiratebay.zone/
   - https://tpb.party/
-  - https://piratebay1.live/
-  - https://piratebay1.xyz/
-  - https://piratebay1.top/
   - https://piratebayproxy.live/
-  - https://piratebay1.info/
-  - https://thepiratebay1.com/
-  - https://thepiratebay1.live/
-  - https://thepiratebays.info/
-  - https://thepiratebays.live/
-  - https://thepiratebay1.top/
-  - https://thepiratebay1.info/
 
 legacylinks:
   - https://thepiratesbay.pw/
@@ -34,10 +23,21 @@ legacylinks:
   - https://tpb.bike/ # broken search
   - https://pirateproxy.page/ # using new html
   - https://tpb14.ukpass.co/ # using new html and has broken search
+  - https://thepiratebay.vip/ # 522
+  - https://piratebay1.live/ # host not found
+  - https://piratebay1.xyz/
+  - https://piratebay1.top/
+  - https://piratebay1.info/
+  - https://thepiratebay1.com/
+  - https://thepiratebay1.live/
+  - https://thepiratebays.info/
+  - https://thepiratebays.live/
+  - https://thepiratebay1.top/
+  - https://thepiratebay1.info/
 
 caps:
   categorymappings:
-    #Audio
+    # Audio
     - {id: 100, cat: Audio, desc: "Audio", default: true}
     - {id: 101, cat: Audio, desc: "Music", default: true}
     - {id: 102, cat: Audio/Audiobook, desc: "Audio books", default: true}
@@ -45,7 +45,7 @@ caps:
     - {id: 104, cat: Audio/Lossless, desc: "FLAC", default: true}
     - {id: 199, cat: Audio/Other, desc: "Audio Other", default: true}
 
-    #Video
+    # Video
     - {id: 200, cat: Movies, desc: "Video", default: true}
     - {id: 201, cat: Movies, desc: "Movies", default: true}
     - {id: 202, cat: Movies/DVD, desc: "Movies DVDR", default: true}
@@ -58,7 +58,7 @@ caps:
     - {id: 209, cat: Movies/3D, desc: "3D", default: true}
     - {id: 299, cat: Movies/Other, desc: "Video Other", default: true}
 
-    #Applications
+    # Applications
     - {id: 300, cat: PC, desc: "Applications", default: true}
     - {id: 301, cat: PC, desc: "Windows", default: true}
     - {id: 302, cat: PC/Mac, desc: "Mac", default: true}
@@ -68,7 +68,7 @@ caps:
     - {id: 306, cat: PC/Phone-Android, desc: "Android", default: true}
     - {id: 399, cat: PC, desc: "Other OS", default: true}
 
-    #Games
+    # Games
     - {id: 400, cat: Console, desc: "Games", default: true}
     - {id: 401, cat: PC/Games, desc: "PC", default: true}
     - {id: 402, cat: PC/Mac, desc: "Mac", default: true}
@@ -80,7 +80,7 @@ caps:
     - {id: 408, cat: Console/Other, desc: "Android", default: true}
     - {id: 499, cat: Console/Other, desc: "Games Other", default: true}
 
-    #Porn
+    # Porn
     - {id: 500, cat: XXX, desc: "Porn", default: true}
     - {id: 501, cat: XXX, desc: "Movies", default: true}
     - {id: 502, cat: XXX/DVD, desc: "Movies DVDR", default: true}
@@ -90,7 +90,7 @@ caps:
     - {id: 506, cat: XXX, desc: "Movie clips", default: true}
     - {id: 599, cat: XXX/Other, desc: "Porn Other", default: true}
 
-    #Other
+    # Other
     - {id: 600, cat: Other, desc: "Other", default: true}
     - {id: 601, cat: Books, desc: "E-books", default: true}
     - {id: 602, cat: Books/Comics, desc: "Comics", default: true}
@@ -123,6 +123,9 @@ search:
   paths:
     - path: "{{ if .Keywords }}/search/{{ .Keywords }}/0/{{ .Config.order }}/{{ join .Categories \",\"}}{{else}}/recent{{end}}"
   keywordsfilters:
+    # remove it's #8829
+    - name: re_replace
+      args: ["(?i)(it's\\s)", ""]
     # replace simplified chinese as this confuses TPB search engine #7291
     - name: re_replace
       args: ["([\\p{IsCJKUnifiedIdeographs}\\W]+)", "."]

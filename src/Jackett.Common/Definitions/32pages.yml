@@ -1,6 +1,6 @@
 # Because API is broken we use screen scraping instead of the generic Gazelle based approach
 ---
-site: 32pages
+id: 32pages
 name: 32Pages
 description: "32Pages (32P) is a Private Torrent Tracker for comic books/graphic novels"
 language: en-us
@@ -77,7 +77,7 @@ login:
 search:
   paths:
     - path: torrents.php
-    #site displays just 25 results per page, no profile options found to change this, so we attempt to fetch 4 pages
+    # site displays just 25 results per page, no profile options found to change this, so we attempt to fetch 4 pages
     - path: torrents.php
       inputs:
         page: 2
@@ -109,7 +109,7 @@ search:
         - name: prepend
           args: "{{.Result._grouptitle}} - "
         - name: replace
-          args: ["/  /","/"] #removes slash left after freeleech images
+          args: ["/  /", "/"] # removes slash left after freeleech images
         - name: append
           args: "{{if .Result._language}} [{{.Result._language}}]{{else}}{{end}}"
     category:

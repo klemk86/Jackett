@@ -1,5 +1,5 @@
 ---
-site: mteamtp2fa
+id: mteamtp2fa
 name: MTeamTP2FA
 description: "this indexer uses a cookie login for MTeamTP for those that want to use 2FA"
 language: zh-cn
@@ -61,7 +61,8 @@ settings:
   - name: infocookie
     type: info
     label: How to get the Cookie
-    default: "<ol><li>Login to this tracker with your browser<li>Open the <b>DevTools</b> panel by pressing <b>F12</b><li>Select the <b>Network</b> tab<li>Click on the <b>Doc</b> button<li>Refresh the page by pressing <b>F5</b><li>Select the <b>Headers</b> tab<li>Find <b>'cookie:'</b> in the <b>Request Headers</b> section<li><b>Select</b> and <b>Copy</b> the whole cookie string <i>(everything after 'cookie: ')</i> and <b>Paste</b> here.</ol>"
+    default: "<ol><li>Login to this tracker with your browser<li>Open the <b>DevTools</b> panel by pressing <b>F12</b><li>Select the <b>Network</b> tab<li>Click on the <b>Doc</b> button (Chrome Browser) or <b>HTML</b> button (FireFox)<li>Refresh the page by pressing <b>F5</b><li>Click on the first row entry<li>Select the <b>Headers</b> tab on the Right panel<li>Find <b>'cookie:'</b> in the <b>Request Headers</b> section<li><b>Select</b> and <b>Copy</b> the whole cookie string <i>(everything after 'cookie: ')</i> and <b>Paste</b> here.</ol>"
+
   - name: infotitle
     type: info
     label: About Titles
@@ -82,6 +83,11 @@ settings:
     options:
       "desc": "desc"
       "asc": "asc"
+  - name: info_tpp
+    type: info
+    label: Results Per Page
+    default: For best results, change the <b>Torrents per page:</b> setting to <b>100</b> on your account profile.
+
 login:
   method: cookie
   inputs:
@@ -149,7 +155,7 @@ search:
           args: ["pic/nopic.jpg", ""]
     imdb:
       optional: true
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
     size:
       selector: td.rowfollow:nth-last-child(6)

@@ -1,5 +1,5 @@
 ---
-site: purovicio
+id: purovicio
 name: PuroVicio
 description: "PuroVicio is a Latin American Private Torrent Tracker for MOVIES / TV / GENERAL"
 language: es-419
@@ -36,7 +36,8 @@ settings:
   - name: info_cookie
     type: info
     label: How to get the Cookie
-    default: "<ol><li>Login to this tracker with your browser<li>Open the <b>DevTools</b> panel by pressing <b>F12</b><li>Select the <b>Network</b> tab<li>Click on the <b>Doc</b> button<li>Refresh the page by pressing <b>F5</b><li>Select the <b>Headers</b> tab<li>Find <b>'cookie:'</b> in the <b>Request Headers</b> section<li><b>Select</b> and <b>Copy</b> the whole cookie string <i>(everything after 'cookie: ')</i> and <b>Paste</b> here.</ol>"
+    default: "<ol><li>Login to this tracker with your browser<li>Open the <b>DevTools</b> panel by pressing <b>F12</b><li>Select the <b>Network</b> tab<li>Click on the <b>Doc</b> button (Chrome Browser) or <b>HTML</b> button (FireFox)<li>Refresh the page by pressing <b>F5</b><li>Click on the first row entry<li>Select the <b>Headers</b> tab on the Right panel<li>Find <b>'cookie:'</b> in the <b>Request Headers</b> section<li><b>Select</b> and <b>Copy</b> the whole cookie string <i>(everything after 'cookie: ')</i> and <b>Paste</b> here.</ol>"
+
   - name: sort
     type: select
     label: Sort requested from site
@@ -116,7 +117,7 @@ search:
       optional: true
     imdb:
       optional: true
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
     size:
       selector: td:nth-last-child(4)
@@ -132,7 +133,7 @@ search:
     date:
       selector: time
       filters:
-          # translations for Turkish|Estonian|Danish|Italian|Polish|Norwegian|Portuguese|Czech|Russian|Romanian|Spanish|French|German|Bulgarian|Dutch|Chinese
+        # translations for Turkish|Estonian|Danish|Italian|Polish|Norwegian|Portuguese|Czech|Russian|Romanian|Spanish|French|German|Bulgarian|Dutch|Chinese
         - name: re_replace
           args: ["(?i)(önce|tagasi|geleden|fa|temu|siden|há|atrás|nazpět|назад|acum|în urmă|hace|il y a|vor|преди|前)", " ago"]
         - name: re_replace

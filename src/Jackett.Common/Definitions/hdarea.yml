@@ -1,5 +1,5 @@
 ---
-site: hdarea
+id: hdarea
 name: HDArea
 description: "HDArea is a CHINESE Private Torrent Tracker for HD MOVIES / TV"
 language: zh-cn
@@ -58,6 +58,10 @@ settings:
     options:
       "desc": "desc"
       "asc": "asc"
+  - name: info_tpp
+    type: info
+    label: Results Per Page
+    default: For best results, change the <b>Torrents per page:</b> setting to <b>100</b> on your account profile.
 
 login:
   path: takelogin.php
@@ -65,8 +69,12 @@ login:
   inputs:
     username: "{{ .Config.username }}"
     password: "{{ .Config.password }}"
+    logout: ""
+    securelogin: ""
+    ssl: yes
+    trackerssl: yes
   error:
-    - selector: td.embedded:has(h2:contains("登录失败"))
+    - selector: td.embedded:has(h2:contains("失败"))
     - selector: td.embedded:has(h2:contains("failed"))
   test:
     path: index.php
@@ -120,7 +128,7 @@ search:
       attribute: href
     imdb:
       optional: true
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
     date:
       # time type: time elapsed (default)

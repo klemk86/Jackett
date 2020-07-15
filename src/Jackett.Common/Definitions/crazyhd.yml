@@ -1,5 +1,5 @@
 ---
-site: crazyhd
+id: crazyhd
 name: CrazyHD
 description: "CrazyHD is a BANGLADESHI Private Torrent Tracker for MOVIES / TV / GENERAL"
 language: en-us
@@ -52,7 +52,7 @@ caps:
     - {id: 39, cat: PC, desc: "Software Tutorials"}
     - {id: 63, cat: PC, desc: "Software Linux"}
     - {id: 89, cat: PC/Mac, desc: "Software MAC OSX"}
-    #Bangla
+    # Bangla
     - {id: 56, cat: Movies, desc: "Movies Bangla"}
     - {id: 35, cat: Movies, desc: "Movies Bangla Natok"}
     - {id: 47, cat: Movies, desc: "Movies Indian Bangla"}
@@ -86,12 +86,14 @@ caps:
     music-search: [q]
 
 settings:
-  - name: username
+  - name: cookie
     type: text
-    label: Username
-  - name: password
-    type: password
-    label: Password
+    label: Cookie
+  - name: info
+    type: info
+    label: How to get the Cookie
+    default: "<ol><li>Login to this tracker with your browser<li>Open the <b>DevTools</b> panel by pressing <b>F12</b><li>Select the <b>Network</b> tab<li>Click on the <b>Doc</b> button (Chrome Browser) or <b>HTML</b> button (FireFox)<li>Refresh the page by pressing <b>F5</b><li>Click on the first row entry<li>Select the <b>Headers</b> tab on the Right panel<li>Find <b>'cookie:'</b> in the <b>Request Headers</b> section<li><b>Select</b> and <b>Copy</b> the whole cookie string <i>(everything after 'cookie: ')</i> and <b>Paste</b> here.</ol>"
+
   - name: sort
     type: select
     label: Sort requested from site
@@ -110,14 +112,9 @@ settings:
       "1": "asc"
 
 login:
-  path: index.php?page=login
-  method: form
-  form: form[action^="index.php?page=login"]
+  method: cookie
   inputs:
-    uid: "{{ .Config.username }}"
-    pwd: "{{ .Config.password }}"
-  error:
-    - selector: tr td span[style="color:#FF0000;"]
+    cookie: "{{ .Config.cookie }}"
   test:
     path: index.php
     selector: a[href="logout.php"]
@@ -154,8 +151,8 @@ search:
     title:
       selector: div.list-name a.tlink
       filters:
-         - name: re_replace
-           args: [" [\\(\\=\\!]+(50|100).*?[\\!\\=\\)]+", ""]
+        - name: re_replace
+          args: [" [\\(\\=\\!]+(50|100).*?[\\!\\=\\)]+", ""]
     details:
       selector: div.list-name a.tlink
       attribute: href

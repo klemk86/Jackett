@@ -1,5 +1,5 @@
 ---
-site: cpasbienclone
+id: cpasbienclone
 name: cpasbien clone
 description: "cpasbien clone is a FRENCH Public site for TV / MOVIES / GENERAL"
 language: fr-fr
@@ -8,23 +8,21 @@ encoding: UTF-8
 followredirect: true
 links:
   - https://cpasbien.to/
-  - https://cpasbiens.black-mirror.xyz/
-  - https://cpasbiens.unblocked.casa/
-  - https://cpasbiens.proxyportal.fun/
-  - https://cpasbiens.uk-unblock.xyz/
-  - https://cpasbiens.ind-unblock.xyz/
 legacylinks:
   - https://www1.cpasbiens.ws/
   - https://www2.cpasbiens.ws/
   - https://cpasbiens.cm/
   - https://www1.cpasbiens.cm/
   - https://wwv.cpasbien.to/
+  - https://cpasbiens.black-mirror.xyz/
+  - https://cpasbiens.unblocked.casa/
+  - https://cpasbiens.proxyportal.fun/
+  - https://cpasbiens.uk-unblock.xyz/
+  - https://cpasbiens.ind-unblock.xyz/
 
 caps:
   categorymappings:
-    - {id: films, cat: Movies, desc: "Movies"}
-    - {id: series, cat: TV, desc: "TV"}
-    - {id: other, cat: Other, desc: "Other"}
+    - {id: other, cat: Other, desc: "Movies/TV/Other"}
 
   modes:
     search: [q]
@@ -45,6 +43,10 @@ settings:
       "?trie-poid-a": "size asc"
       "?trie-nom-d": "title desc"
       "?trie-nom-a": "title asc"
+  - name: info_categories
+    type: info
+    label: "About categories"
+    default: "cpasbien clone does not show <b>Categories</b> in its Search Results.<br />To use this indexer with Sonarr/Radarr set your indexer category to <b>7000</b>."
 
 download:
   selector: a[href^="magnet:"]

@@ -1,5 +1,5 @@
 ---
-site: torrentz2
+id: torrentz2
 name: Torrentz2
 description: "Torrentz2 is a Public torrent meta-search engine combining results from dozens of torrent sites"
 language: en-us
@@ -7,17 +7,23 @@ type: public
 encoding: UTF-8
 followredirect: true
 links:
-  - https://torrentz2.eu/
-  - https://torrentz.unblockit.me/
+  - https://torrentz2.is/
+  - https://torrentz.unblockit.id/
+  - https://torrentz2.unblocked.bar/
+  - https://torrentz2.proxyportal.pw/
+  - https://torrentz2.uk-unblock.pro/
+legacylinks:
+  - https://torrentz.unblockit.pro/
+  - https://torrentz.unblockit.one/
   - https://torrentz2.black-mirror.xyz/
   - https://torrentz2.unblocked.casa/
   - https://torrentz2.proxyportal.fun/
   - https://torrentz2.uk-unblock.xyz/
   - https://torrentz2.ind-unblock.xyz/
-legacylinks:
-  - https://torrentz2.unblockninja.com/ # proxy fails at DDoS protection
-  - https://torrentz.unblockit.pro/
-  - https://torrentz.unblockit.one/
+  - https://torrentz.unblockit.me/
+  - https://torrentz.unblockit.pw/
+  - https://torrentz2.eu/ # domain suspended by registry
+  - https://torrentz2.unblockninja.com/ # only supports search?f=
 
 caps:
   categories:
@@ -93,8 +99,8 @@ search:
   paths:
     - path: "{{if .Config.filter-verified }}verified{{else}}search{{end}}{{ re_replace .Config.sort \"_\" \"\" }}"
   inputs:
-     f: "{{ if .Keywords }}title: {{ .Keywords }}{{else}}{{end}}"
-     safe: "{{ if .Config.filter-safe }}1{{else}}0{{end}}"
+    f: "{{ if .Keywords }}title: {{ .Keywords }}{{else}}{{end}}"
+    safe: "{{ if .Config.filter-safe }}1{{else}}0{{end}}"
 
   rows:
     selector: "html body #wrap .results dl:has(a)"

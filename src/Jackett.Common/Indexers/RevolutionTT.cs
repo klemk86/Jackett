@@ -35,16 +35,17 @@ namespace Jackett.Common.Indexers
         }
 
         public RevolutionTT(IIndexerConfigurationService configService, Utils.Clients.WebClient wc, Logger l, IProtectionService ps)
-            : base(name: "RevolutionTT",
-                description: "The Revolution has begun",
-                link: "https://revolutiontt.me/",
-                caps: TorznabUtil.CreateDefaultTorznabTVCaps(),
-                configService: configService,
-                client: wc,
-                logger: l,
-                p: ps,
-                downloadBase: "https://revolutiontt.me/download.php/",
-                configData: new ConfigurationDataBasicLoginWithRSS())
+            : base(id: "revolutiontt",
+                   name: "RevolutionTT",
+                   description: "The Revolution has begun",
+                   link: "https://revolutiontt.me/",
+                   caps: TorznabUtil.CreateDefaultTorznabTVCaps(),
+                   configService: configService,
+                   client: wc,
+                   logger: l,
+                   p: ps,
+                   downloadBase: "https://revolutiontt.me/download.php/",
+                   configData: new ConfigurationDataBasicLoginWithRSS())
         {
             Encoding = Encoding.GetEncoding("iso-8859-1");
             Language = "en-us";
@@ -197,13 +198,8 @@ namespace Jackett.Common.Indexers
             var homePageLoad = await RequestLoginAndFollowRedirect(LandingPageURL, new Dictionary<string, string> { }, null, true, null, SiteLink);
 
             var result = await RequestLoginAndFollowRedirect(LoginUrl, pairs, homePageLoad.Cookies, true, null, LandingPageURL);
-            await ConfigureIfOK(result.Cookies, result.Content != null && result.Content.Contains("/logout.php"), () =>
-            {
-                var parser = new HtmlParser();
-                var dom = parser.ParseDocument(result.Content);
-                var errorMessage = dom.QuerySelector(".error").TextContent.Trim();
-                throw new ExceptionWithConfigData(errorMessage, configData);
-            });
+            await ConfigureIfOK(result.Cookies, result.Content?.Contains("/logout.php") == true, () =>
+                throw new ExceptionWithConfigData("Login failed! Check the username and password. If they are ok, try logging on the website.", configData));
 
             //  Store RSS key from feed generator page
             try
