@@ -99,12 +99,12 @@ namespace Jackett.Common.Indexers
                 { "user[password]", configData.Password.Value }
             };
 
-            var result = await RequestLoginAndFollowRedirect(LoginUrl, pairs, String.Empty, false, null, null, true);
+            var result = await RequestLoginAndFollowRedirect(LoginUrl, pairs, string.Empty, false, null, null, true);
             await ConfigureIfOK(result.Cookies, result.Content != null && result.Content.Contains("/odjava"), () =>
             {
-                CQ dom = result.Content;
-                var errorMessage = dom["div.obvet > span.najvecji"].Text().Trim(); // Prijava ni uspela! obvestilo
-                throw new ExceptionWithConfigData(errorMessage, configData);
+                var parser = new HtmlParser();
+                var dom = parser.ParseDocument(result.Content);
+                var errorMessage = dom.QuerySelector("div.obvet > span.najvecji").TextContent.Trim(); // Prijava ni uspela! obvestilo                throw new ExceptionWithConfigData(errorMessage, configData);
             });
             return IndexerConfigurationStatus.RequiresTesting;
         }
@@ -142,7 +142,7 @@ namespace Jackett.Common.Indexers
             results = await RequestStringWithCookies(searchUrl, null, SearchUrl, heder);
             await FollowIfRedirect(results, null, null, null, true);
 
-            /// are we logged in?
+            // are we logged in?
             if (!results.Content.Contains("/odjava"))
             {
                 await ApplyConfiguration(null);
