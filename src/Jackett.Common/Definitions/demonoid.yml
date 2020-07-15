@@ -1,5 +1,5 @@
 ---
-site: demonoid
+id: demonoid
 name: Demonoid
 description: "Demonoid is a Public torrent site for MOVIES / TV / GENERAL"
 language: en-us
@@ -8,20 +8,22 @@ encoding: UTF-8
 followredirect: true
 links:
   - https://www.demonoid.is/
+  - https://demonoid.unblockit.id/
 legacylinks:
   - https://www.dnoid.to/
   - https://demonoid.unblockit.pro/
   - https://demonoid.unblockit.one/
-  - https://demonoid.unblockit.me/ # currently down
-  - https://dnoid.black-mirror.xyz/ # proxy's IP blocked
-  - https://dnoid.unblocked.casa/ # proxy's IP blocked
-  - https://dnoid.proxyportal.fun/ # proxy's IP blocked
-  - https://dnoid.uk-unblock.xyz/ # proxy's IP blocked
-  - https://dnoid.ind-unblock.xyz/ # proxy's IP blocked
+  - https://demonoid.unblockit.me/
+  - https://dnoid.black-mirror.xyz/
+  - https://dnoid.unblocked.casa/
+  - https://dnoid.proxyportal.fun/
+  - https://dnoid.uk-unblock.xyz/
+  - https://dnoid.ind-unblock.xyz/
+  - https://demonoid.unblockit.pw/
 
 caps:
   categorymappings:
-  # fetch these from https://www.demonoid.is/cached/torrent_categories_script.js?v5
+    # fetch these from https://www.demonoid.is/cached/torrent_categories_script.js?v5
     # Applications
     - {id: 1, cat: PC/Phone-Android, desc: "Applications Android"}
     - {id: 2, cat: PC/Phone-IOS, desc: "Applications Iphone / Ipod touch"}
@@ -283,22 +285,17 @@ settings:
   - name: info
     type: info
     label: How to get the Cookie
-    default: "<ol><li>Access this tracker with your browser<li>click on the <b>Apply Filter</b> button on the page to invoke the search and solve the challenge<li>Open the <b>DevTools</b> panel by pressing <b>F12</b><li>Select the <b>Network</b> tab<li>Click on the <b>Doc</b> button<li>Refresh the page by pressing <b>F5</b><li>Select the <b>Headers</b> tab<li>Find <b>'cookie:'</b> in the <b>Request Headers</b> section<li><b>Select</b> and <b>Copy</b> the whole cookie string <i>(everything after 'cookie: ')</i> and <b>Paste</b> here.</ol>"
+    default: "<ol><li>Access this tracker with your browser<li>click on the <b>Apply Filter</b> button on the page to invoke the search and solve the challenge<li>Open the <b>DevTools</b> panel by pressing <b>F12</b><li>Select the <b>Network</b> tab<li>Click on the <b>Doc</b> button (Chrome Browser) or <b>HTML</b> button (FireFox)<li>Refresh the page by pressing <b>F5</b><li>Click on the first row entry<li>Select the <b>Headers</b> tab on the Right panel<li>Find <b>'cookie:'</b> in the <b>Request Headers</b> section<li><b>Select</b> and <b>Copy</b> the whole cookie string <i>(everything after 'cookie: ')</i> and <b>Paste</b> here.</ol>"
   - name: sort
     type: select
     label: Sort requested from site
     default: "added"
     options:
-      "added": "created"
-      "seeders": "seeders"
-      "size": "size"
-  - name: type
-    type: select
-    label: Order requested from site
-    default: "desc"
-    options:
-      "desc": "desc"
-      "asc": "asc"
+      "_": "created"
+      "S": "seeders desc"
+      "s": "seeders asc"
+      "B": "size desc"
+      "b": "size asc"
 
 login:
   method: cookie
@@ -311,6 +308,7 @@ download:
 
 search:
   paths:
+    # https://www.demonoid.is/files/?category=0&subcategory=0&quality=0&seeded=2&external=2&query=&sort=S
     # https://www.demonoid.is/files/?c154&language=0&quality=0&seeded=2&query=world&to=1&sort=
     # https://www.demonoid.is/files/?seeded=2&language=0&quality=0&to=1&query=world
     - path: files/
@@ -318,15 +316,14 @@ search:
     $raw: "{{ range .Categories }}c{{.}}&{{end}}"
     # 0 seeded 1 unseeded 2 both
     seeded: 2
-    # 0 all 1 English etc
-    language: 0
     # 0 all
     quality: 0
+    # 0 Demonoid 1 External 2 Both
+    external: 2
     # search in titles only
     to: "{{ if .Query.IMDBID }}{{else}}1{{end}}"
     query: "{{ if .Query.IMDBID }}{{ .Query.IMDBID }}{{else}}{{ .Keywords }}{{end}}"
-    sort: "{{ .Config.sort }}"
-    order: "{{ .Config.type }}"
+    sort: "{{ re_replace .Config.sort \"_\" \"\" }}"
     # does not return imdb link in results
 
   rows:

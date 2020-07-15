@@ -22,14 +22,15 @@ namespace Jackett.Common.Indexers
     public class SceneTime : BaseWebIndexer
     {
         private string StartPageUrl => SiteLink + "login.php";
-        private string LoginUrl => SiteLink + "takelogin.php";
+        private string LoginUrl => SiteLink + "takelogin1.php";
         private string SearchUrl => SiteLink + "browse.php";
         private string DownloadUrl => SiteLink + "download.php/{0}/download.torrent";
 
         private new ConfigurationDataSceneTime configData => (ConfigurationDataSceneTime)base.configData;
 
         public SceneTime(IIndexerConfigurationService configService, WebClient w, Logger l, IProtectionService ps)
-            : base("SceneTime",
+            : base(id: "scenetime",
+                   name: "SceneTime",
                    description: "Always on time",
                    link: "https://www.scenetime.com/",
                    caps: new TorznabCapabilities(),

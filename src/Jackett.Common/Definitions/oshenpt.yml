@@ -1,12 +1,14 @@
 ---
-site: oshenpt
+id: oshenpt
 name: OshenPT
 description: "OshenPT is a CHINESE Private Torrent Tracker for HD Movies, TV, Music"
 language: zh-cn
 type: private
 encoding: UTF-8
 links:
-  - https://www.oshen.win/
+  - http://www.oshen.win/
+links:
+  - https://www.oshen.win/ # forces http
 
 caps:
   categorymappings:
@@ -50,6 +52,10 @@ settings:
     options:
       "desc": "desc"
       "asc": "asc"
+  - name: info_tpp
+    type: info
+    label: Results Per Page
+    default: For best results, change the <b>Torrents per page:</b> setting to <b>100</b> on your account profile.
 
 login:
   path: takelogin.php
@@ -57,8 +63,12 @@ login:
   inputs:
     username: "{{ .Config.username }}"
     password: "{{ .Config.password }}"
+    logout: ""
+    securelogin: ""
+    ssl: ""
+    trackerssl: ""
   error:
-    - selector: td.embedded:has(h2:contains("登录失败"))
+    - selector: td.embedded:has(h2:contains("失败"))
   test:
     path: index.php
     selector: a[href="logout.php"]

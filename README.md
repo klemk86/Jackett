@@ -7,7 +7,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/linuxserver/jackett.svg?maxAge=60&style=flat-square)](https://hub.docker.com/r/linuxserver/jackett/)
 [![Discord](https://img.shields.io/badge/discord-chat-7289DA.svg?maxAge=60&style=flat-square)](https://discord.gg/J865QuA)
 
-This project is a new fork and is recruiting development help.  If you are able to help out please contact us.
+This project is a new fork and is recruiting development help.  If you are able to help out please [contact us](https://github.com/Jackett/Jackett/issues/8180).
 
 Please see our [troubleshooting and contributing guidelines](CONTRIBUTING.md) before submitting any issues or pull requests
 
@@ -42,7 +42,6 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * BTDIGG
  * BTeye
  * BTSOW
- * Cili180
  * ConCen
  * Corsaro.red
  * cpasbien
@@ -54,7 +53,6 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * Epizod
  * ETTV
  * EXT Torrents
- * ExtraTorrent.ag
  * ExtraTorrent.cd
  * EZTV
  * Filebase
@@ -76,6 +74,7 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * KickAssTorrent (KATcr)
  * Legit Torrents
  * LePorno
+ * LIAORENCILI (Cili180)
  * LimeTorrents
  * LinuxTracker
  * MacTorrents
@@ -86,11 +85,11 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * MovCr
  * MoviesDVDR
  * MyPornClub
- * Newpct (aka: tvsinpagar, descargas2020, torrentlocura, torrentrapid, tumejortorrent, pctnew, etc)
+ * NewPCT (aka: tvsinpagar, descargas2020, torrentlocura, torrentrapid, tumejortorrent, pctnew, etc)
  * Newstudio
  * Nitro
  * NNTT
- * NoName Club (NNM-Club)
+ * NoNaMe Club (NNM-Club)
  * Nyaa-Pantsu
  * Nyaa.si
  * OneJAV
@@ -99,6 +98,7 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * PC-torrent
  * PiratBit
  * Pirateiro
+ * Pornforall
  * PornLeech
  * PornoLive
  * PornoRip
@@ -114,12 +114,11 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * shokweb
  * ShowRSS
  * SkyTorrentsClone
- * SolidTorrents
+ * Solid Torrents
  * sosulki
  * sukebei-Pantsu
  * sukebei.Nyaa.si
  * The Pirate Bay (TPB)
- * TNTVillage
  * Tokyo Tosho
  * TopNow
  * Torlock
@@ -148,6 +147,7 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * UnionDHT
  * XFSUB
  * xxxtor
+ * xxxtorrents
  * YourBittorrent
  * YTS.ag
  * zetorrents
@@ -162,13 +162,15 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * BaibaKo
  * BookTracker
  * CasStudioTV
- * Crazy's Corner
  * CzTorrent
- * DXP (Deaf Experts)
+ * cool-torrent
+ * Darmowe torrenty
  * Deildu
  * DimeADozen (EzTorrent)
+ * DXP (Deaf Experts)
  * EniaHD
  * Erzsebet
+ * Erzsebet.pl
  * ExKinoRay
  * ExtremlymTorrents
  * FilmsClub
@@ -189,7 +191,7 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * Metal Tracker
  * MuziekFrabriek
  * NetHD (VietTorrent)
- * Pornolab
+ * PornoLab
  * PussyTorrents
  * RiperAM
  * RockBox
@@ -224,6 +226,7 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * Abnormal
  * Acid Lounge (A-L)
  * Aftershock
+ * Aither
  * AlphaRatio (AR)
  * AmigosShareClub
  * AnimeBytes (AB)
@@ -235,7 +238,7 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * AsianCinema
  * AudioNews (AN)
  * Audiobook Torrents (ABT + RNS)
- * Avistaz (AsiaTorrents)
+ * AvistaZ (AsiaTorrents)
  * Awesome-HD (AHD)
  * BIGTorrent
  * BIT-HDTV
@@ -263,8 +266,9 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * Boxing Torrents
  * Brasil Tracker
  * BroadCity
- * BroadcastTheNet (BTN)
+ * BroadcasTheNet (BTN)
  * BrokenStones
+ * BWTorrents
  * CCFBits
  * CGPeers
  * CHDBits
@@ -289,10 +293,10 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * Dark Tracker
  * Das Unerwartete
  * DataScene (DS)
- * Demon-Site
  * DesiReleasers
  * DesiTorrents
  * Diablo Torrent
+ * DICMusic
  * DigitalCore
  * DigitalHive
  * DivTeam
@@ -310,6 +314,7 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * eStone (XiDER, BeLoad)
  * Ethor.net (Thor's Land)
  * ExoticaZ (YourExotic)
+ * ExtremeBits
  * ExtremeTorrents
  * FANO.IN
  * Fantastic Heaven
@@ -346,6 +351,7 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * HDBits
  * HDCenter
  * HDChina (HDWing)
+ * HDC (HDCiTY)
  * HDCity
  * HDDisk (HDD)
  * HDHome (HDBigger)
@@ -369,11 +375,11 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * IPTorrents (IPT)
  * ImmortalSeed (iS)
  * Immortuos
- * inPeril
  * Insane Tracker
  * JPopsuki
  * Kapaki
  * Karagarga
+ * Keep Friends
  * LastFiles
  * Le Saloon
  * LeChaudron
@@ -401,11 +407,12 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * NetCosmo
  * NetLab
  * New Real World
- * Norbits
+ * NorBits
  * NordicBits (NB)
- * NORDiCHD
  * notwhat.cd
+ * oMg[WtF]trackr
  * OnlineSelfEducation
+ * ONLYscene
  * Orpheus
  * OshenPT
  * Ourbits (HDPter)
@@ -443,8 +450,7 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * Redacted (PassTheHeadphones)
  * RetroFlix
  * RevolutionTT
- * RoDVD (Cinefiles)
- * Romanian Metal Torrent (RMT)
+ * Romanian Metal Torrents (RMT)
  * SDBits
  * SceneFZ
  * SceneHD
@@ -468,7 +474,7 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * SportHD
  * SportsCult
  * SpringSunday
- * SuperBits (SBS)
+ * Superbits (SBS)
  * TEKNO3D
  * TLFBits
  * TOrrent-tuRK (TORK)
@@ -492,10 +498,10 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * The Shinning (TsH)
  * The Show
  * The Vault
- * The-Madhouse
  * TheAudioScene
  * TheEmpire (TE)
- * ToTheGlory
+ * TJUPT
+ * ToTheGlory (TTG)
  * Torrent Network (TN)
  * Torrent Sector Crew (TSC)
  * Torrent-Syndikat
@@ -515,9 +521,11 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * Torrenting (TT)
  * Torrentland
  * TotallyKids (TK)
+ * TorrentSeed
  * TranceTraffic
  * Trezzor
  * TurkSeed
+ * TurkNova
  * TurkTorrent (TT)
  * Twilight Torrents
  * Twilights Zoom
@@ -540,6 +548,8 @@ Developer note: The software implements the [Torznab](https://github.com/Sonarr/
  * Xthor
  * XtreMeZone (MYXZ)
  * XtremeFile
+ * YDYPT
+ * YingK
  * Zamunda.net
  * Zelka.org
 </details>

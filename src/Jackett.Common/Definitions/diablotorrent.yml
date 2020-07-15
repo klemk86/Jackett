@@ -1,5 +1,5 @@
 ---
-site: diablotorrent
+id: diablotorrent
 name: Diablo Torrent
 description: " Diablo Torrent is a Hungarian Private site for TV / MOVIES / GENERAL"
 language: hu-hu
@@ -126,7 +126,7 @@ search:
           args: src='(.*?)'
     imdb:
       optional: true
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
     description:
       selector: div.torrent_row_magyarcim

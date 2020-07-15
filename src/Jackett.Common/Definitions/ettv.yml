@@ -1,5 +1,5 @@
 ---
-site: ettv
+id: ettv
 name: ETTV
 description: "ETTV is a Public torrent site for TV / MOVIES, home of the  ETTV, ETHD and DTOne groups."
 language: en-us
@@ -8,19 +8,24 @@ encoding: UTF-8
 followredirect: true
 links:
   - https://www.ettvdl.com/
-  - https://ettv.unblockit.me/
+  - https://ettv.unblockit.id/
   - https://ettv.unblockninja.com/
   - https://ettv.root.yt/
-  - https://ettv.black-mirror.xyz/
-  - https://ettv.unblocked.casa/
-  - https://ettv.proxyportal.fun/
-  - https://ettv.uk-unblock.xyz/
-  - https://ettv.ind-unblock.xyz/
+  - https://ettv.unblocked.bar/
+  - https://ettv.proxyportal.pw/
+  - https://ettv.uk-unblock.pro/
 legacylinks:
   - https://www.ettv.tv/
   - https://www.ettv.to/
   - https://ettv.unblockit.pro/
   - https://ettv.unblockit.one/
+  - https://ettv.black-mirror.xyz/
+  - https://ettv.unblocked.casa/
+  - https://ettv.proxyportal.fun/
+  - https://ettv.uk-unblock.xyz/
+  - https://ettv.ind-unblock.xyz/
+  - https://ettv.unblockit.me/
+  - https://ettv.unblockit.pw/
 
 caps:
   categorymappings:
@@ -139,7 +144,7 @@ search:
         - name: re_replace
           args: ["( torrent)$", ""]
     category:
-      text: 78 #7110
+      text: 78 # issue #7110
     category|noappend:
       optional: true
       selector: a[href^="/torrents.php?cat="]

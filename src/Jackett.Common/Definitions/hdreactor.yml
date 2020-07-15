@@ -1,5 +1,5 @@
 ---
-site: hdreactor
+id: hdreactor
 name: HDReactor
 description: "HDReactor is a RUSSIAN Public Torrent Tracker for MOVIES / TV"
 language: ru-ru
@@ -8,8 +8,9 @@ encoding: windows-1251
 links:
   - https://hdreactor.net/
   - https://hdreactor.club/
-  - https://hdreactor.guru/
   - https://hdreactor.su/
+legacylinks:
+  - https://hdreactor.guru/
 
 caps:
   categorymappings:
@@ -131,7 +132,7 @@ search:
     date:
       selector: div.news-content
       filters:
-          # - 30-10-2019, 14:49]
+        # - 30-10-2019, 14:49]
         - name: regexp
           args: "(\\d{1,2}\\-\\d{2}\\-\\d{4}\\, \\d{1,2}\\:\\d{2})"
         - name: replace

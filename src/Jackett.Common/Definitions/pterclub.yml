@@ -1,5 +1,5 @@
 ---
-site: pterclub
+id: pterclub
 name: PTerClub
 description: "PTerClub is a CHINESE Private Torrent Tracker for HD MUSIC VIDEOS, MOVIES, TV & ANIME"
 language: zh-cn
@@ -60,6 +60,10 @@ settings:
     options:
       "desc": "desc"
       "asc": "asc"
+  - name: info_tpp
+    type: info
+    label: Results Per Page
+    default: For best results, change the <b>Torrents per page:</b> setting to <b>100</b> on your account profile.
 
 login:
   path: login.php
@@ -73,10 +77,12 @@ login:
     username: "{{ .Config.username }}"
     password: "{{ .Config.password }}"
     verify_code: "{{ .Config.2facode }}"
+    logout: ""
+    securelogin: ""
     ssl: yes
+    trackerssl: yes
   error:
     - selector: td.embedded:has(h2:contains("失败"))
-    - selector: td.embedded:has(h2:contains("登录失败"))
   test:
     path: index.php
     selector: a[data-url="logout.php"]
@@ -126,11 +132,11 @@ search:
       optional: true
     imdb:
       optional: true
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
     date:
       # time type: time elapsed (default)
-      selector: td.rowfollow:nth-last-of-type(6) > span[title]
+      selector: td.rowfollow:nth-of-type(4) > span[title]
       attribute: title
       optional: true
       filters:
@@ -140,7 +146,7 @@ search:
           args: "2006-01-02 15:04:05 -07:00"
     date:
       # time added
-      selector: td.rowfollow:nth-last-of-type(6):not(:has(span))
+      selector: td.rowfollow:nth-of-type(4):not(:has(span))
       optional: true
       filters:
         - name: append
@@ -148,13 +154,13 @@ search:
         - name: dateparse
           args: "2006-01-0215:04:05 -07:00"
     size:
-      selector: td.rowfollow:nth-last-of-type(5)
+      selector: td.rowfollow:nth-of-type(5)
     seeders:
-      selector: td.rowfollow:nth-last-of-type(4)
+      selector: td.rowfollow:nth-of-type(6)
     leechers:
-      selector: td.rowfollow.rowfollow:nth-last-of-type(3)
+      selector: td.rowfollow.rowfollow:nth-of-type(7)
     grabs:
-      selector: td.rowfollow:nth-last-of-type(2)
+      selector: td.rowfollow:nth-of-type(8)
     downloadvolumefactor:
       case:
         img.pro_free: 0

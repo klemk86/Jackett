@@ -1,5 +1,5 @@
 ---
-site: learnflakes
+id: learnflakes
 name: LearnFlakes
 description: "LearnFlakes is a Private Torrent Tracker for CERTIFICATE / TRAINING E-LEARNING"
 language: en-us
@@ -91,7 +91,7 @@ login:
 
 search:
   paths:
-  # 15 results per page
+    # 15 results per page
     - path: /
       inputs:
         page: 1

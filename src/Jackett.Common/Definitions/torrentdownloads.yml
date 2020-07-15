@@ -1,5 +1,5 @@
 ---
-site: torrentdownloads
+id: torrentdownloads
 name: Torrent Downloads
 description: "Torrent Downloads (TD) is a Public torrent site for all kinds of content"
 language: en-us
@@ -9,15 +9,20 @@ followredirect: true
 links:
   - https://www.torrentdownloads.info/
   - https://www.torrentdownloads.me/
-  - https://torrentdownloads.unblockit.me/
+  - https://torrentdownloads.unblockit.id/
+  - https://torrentdownloads.unblocked.bar/
+  - https://torrentdownloads.proxyportal.pw/
+  - https://torrentdownloads.uk-unblock.pro/
+legacylinks:
+  - https://torrentdownloads.unblockit.pro/
+  - https://torrentdownloads.unblockit.one/
   - https://torrentdownloads.black-mirror.xyz/
   - https://torrentdownloads.unblocked.casa/
   - https://torrentdownloads.proxyportal.fun/
   - https://torrentdownloads.uk-unblock.xyz/
   - https://torrentdownloads.ind-unblock.xyz/
-legacylinks:
-  - https://torrentdownloads.unblockit.pro/
-  - https://torrentdownloads.unblockit.one/
+  - https://torrentdownloads.unblockit.me/
+  - https://torrentdownloads.unblockit.pw/
 
 caps:
   categorymappings:
@@ -44,7 +49,7 @@ settings:
     label: Download link
     default: "magnet:"
     options:
-      "http://itorrents.org/" : "iTorrents.org"
+      "http://itorrents.org/": "iTorrents.org"
       "magnet:": "magnet"
 
 download:
@@ -53,17 +58,27 @@ download:
 
 search:
   paths:
-    - path: "{{ if .Keywords }}/search/{{else}}/today/{{end}}"
+    - path: "{{ if .Keywords }}/search/{{ else }}/today/{{ end }}"
   inputs:
     $raw: "{{ range .Categories }}s_cat={{.}}&{{end}}"
     search: "{{ .Keywords }}"
 
   rows:
-    selector: div.inner_container > div:has(p:has(a[href^="/torrent/"]))
+    selector: div.inner_container > div:has(p:has(a[href^="/torrent/"])):not(:has(span.__cf_email__))
 
   fields:
+    category:
+      selector: img[src^="/templates/new/images/icons/menu_icon"]
+      attribute: src
+      filters:
+        - name: regexp
+          args: (\d+)
     title:
       selector: p:nth-child(1) > a
+      attribute: title
+      filters:
+        - name: replace
+          args: ["View torrent info : ", ""]
     details:
       selector: p:nth-child(1) > a[href^="/torrent/"]
       attribute: href
@@ -78,12 +93,6 @@ search:
       selector: span:nth-child(4)
     leechers:
       selector: span:nth-child(3)
-    category:
-      selector: img[src^="/templates/new/images/icons/menu_icon"]
-      attribute: src
-      filters:
-        - name: regexp
-          args: (\d+)
     downloadvolumefactor:
       text: 0
     uploadvolumefactor:

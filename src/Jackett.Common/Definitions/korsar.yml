@@ -1,5 +1,5 @@
 ---
-site: korsar
+id: korsar
 name: Korsar
 description: "Korsar is a RUSSIAN Semi-Private Torrent Tracker for MOVIES / TV / GENERAL"
 language: ru-ru
@@ -448,7 +448,7 @@ login:
 
 search:
   paths:
-  # http://korsar.info/search.php?keywords=deux+moi&sr=topics&sf=titleonly&tracker_search=torrent
+    # http://korsar.info/search.php?keywords=deux+moi&sr=topics&sf=titleonly&tracker_search=torrent
     - path: search.php
   inputs:
     keywords: "{{ if .Keywords }}{{ .Keywords }}{{else}}2020{{end}}"

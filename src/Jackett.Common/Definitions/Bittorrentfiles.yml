@@ -1,5 +1,5 @@
 ---
-site: Bittorrentfiles
+id: Bittorrentfiles
 name: Bittorrentfiles
 description: "Bittorrentfiles is a Private GERMAN tracker"
 language: de-de
@@ -86,7 +86,7 @@ caps:
     - {id: 47, cat: Other, desc: "Sonstiges Line"}
     - {id: 9, cat: Other, desc: "Sonstiges Andere"}
 
-    #XXX
+    # XXX
     - {id: 58, cat: Books/Comics, desc: "XXX HD"}
     - {id: 46, cat: XXX, desc: "XXX Hentai"}
     - {id: 35, cat: XXX/Other, desc: "XXX Andere"}
@@ -150,7 +150,7 @@ search:
     sort: "{{ .Config.type }}"
 
   rows:
-    selector: table.tableinborder > tbody > tr:has(a[href^="details.php"])
+    selector: table.tableinborder > tbody > tr:has(a[href^="/download.php"])
 
   fields:
     title:
@@ -209,7 +209,7 @@ search:
         - name: replace
           args: ["Gestern", "Yesterday"]
     date:
-        # 30.02.2018 23:12:50
+      # 30.02.2018 23:12:50
       selector: td:nth-child(10):contains("."):contains(":")
       optional: true
       filters:

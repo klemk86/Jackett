@@ -1,5 +1,5 @@
 ---
-site: torrentparadise
+id: torrentparadise
 name: TorrentParadise
 description: "Torrent Paradise is a Public magnet indexer"
 language: en-us
@@ -39,20 +39,24 @@ caps:
     "AUDIOBOOKS": Audio/Audiobook
     "AUDIOAUDIOBOOKS": Audio/Audiobook
     "AUDIOFLAC": Audio/Lossless
+    "AUDIOMP3": Audio/MP3
     "AUDIOMUSIC": Audio
     "AUDIOOTHER": Audio/Other
     "AUDIOSOUNDCLIPS": Audio
     "ADULTMOVIES": XXX
     "BOOKS": Books
     "BOOKSMAGAZINES": Books/Magazines
+    "BOOKSNONFICTION": Books
     "COMICSNEM43COMICS": Books/Comics
     "DOCUMENTARIES": TV/Documentary
     "DVDRVIDEO": Movies/DVD
     "EBOOKS": Books/Ebook
+    "EBOOKSTUTORIALS": Books/Ebook
     "ESTRENOS": XXX
     "FLAC": Audio/Lossless
     "FLACMUSIC": Audio/Lossless
     "GAMES": PC/Games
+    "GAMESANDROID": PC/Games
     "GAMESHANDHELD": Console
     "GAMESOTHER": Console
     "GAMESPC": PC/Games
@@ -65,6 +69,8 @@ caps:
     "GAMESWINDOWS": PC/Games
     "GAMESXBOX": Console/Xbox
     "GAMESXBOX360": Console/Xbox 360
+    "IMAGES": Other
+    "JAPANESEANIME": TV/Anime
     "JUEGOS": Console
     "JUEGOSPC": PC/Games
     "JUEGOSPS2": Console/PSP
@@ -86,28 +92,35 @@ caps:
     "MOVIESHD720P": Movies/HD
     "MOVIESHD1080P": Movies/HD
     "MOVIESHEVCX265": Movies/HD
+    "MOVIESSPANISHLANGUAGE": Movies
     "MOVIESSPANISHLATINAMERICA": Movies
     "MOVIESULTRAHD4K": Movies/UHD
     "MOVIESX264H264": Movies/HD
+    "MOVIESXVID": Movies/SD
     "MP3": Audio/MP3
     "MP3MUSIC": Audio/MP3
+    "MSICA": Other
     "MUSIC": Audio
+    "MUSICFLAC": Audio/Lossless
     "MUSICLOSSLESS": Audio/Lossless
     "MUSICMP3": Audio/MP3
+    "MUSICVIDEOS": Audio/Video
     "OTHER": Other
     "OTHERCOMICS": Other
     "OTHERCOVERS": Other
     "OTHEREBOOKS": Other
     "OTHEROTHER": Other
     "OTHERPICTURES": Other
-    "PELICULASCVCD": TV
-    "PELICULASDIVX": TV
-    "PELICULASMICROHD": TV
+    "PELICULASCVCD": TV/SD
+    "PELICULASDIVX": TV/SD
+    "PELICULASHDRIP": TV/HD
+    "PELICULASMICROHD": TV/HD
     "PICTURES": Other
     "PORN": XXX
     "PORNHDMOVIES": XXX
     "PORNGAMES": XXX
     "PORNMOVIECLIPS": XXX
+    "PORNMOVIESDVDR": XXX
     "PORNMOVIES": XXX
     "PORNOTHER": XXX
     "PORNPICTURES": XXX
@@ -121,11 +134,15 @@ caps:
     "TV": TV
     "TVHDX264H264": TV/HD
     "TVHEVCX265": TV/HD
+    "TVDIVXXVID": TV/SD
+    "TVSDXVID": TV/SD
     "TVSDX264H264": TV/SD
     "TVSHOWS": TV
+    "TVSPORT": TV/Sport
     "TVTVPACKS": TV
     "VIDEO": Movies
     "UNSORTEDUNSORTED": Other
+    "VIDEOHANDHELD": Movies
     "VIDEOHDMOVIES": Movies/HD
     "VIDEOHDRIP": Movies
     "VIDEOHDTVSHOWS": TV/HD

@@ -1,12 +1,12 @@
 ---
-site: btdigg
+id: btdigg
 name: BTDigg
 description: "BTDigg is a Public BitTorrent DHT search engine."
 language: en-us
 type: public
 encoding: UTF-8
 links:
-  -  https://btdig.com/
+  - https://btdig.com/
 
 caps:
   categories:

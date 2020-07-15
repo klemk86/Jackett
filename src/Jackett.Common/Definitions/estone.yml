@@ -1,5 +1,5 @@
 ---
-site: estone
+id: estone
 name: eStone
 description: "eStone (XiDER, BeLoad) is a HUNGARIAN Private Torrent Tracker for 0DAY / GENERAL"
 language: hu-hu
@@ -82,7 +82,7 @@ login:
 
 search:
   paths:
-  # http://estone.cc/letoltes.php?kereses_nev=wide&miben=0&cimke=&cat=0&submit.x=40&submit.y=9
+    # http://estone.cc/letoltes.php?kereses_nev=wide&miben=0&cimke=&cat=0&submit.x=40&submit.y=9
     - path: letoltes.php
   inputs:
     $raw: "{{ range .Categories }}kat[]={{.}}&{{end}}{{ .Config.sort }}={{ .Config.type }}"

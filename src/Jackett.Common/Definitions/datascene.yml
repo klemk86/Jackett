@@ -1,5 +1,5 @@
 ---
-site: datascene
+id: datascene
 name: DataScene
 description: "DataScene (DS) is a ROMANIAN Private Torrent Tracker for MOVIES / TV / GENERAL"
 language: ro-ro
@@ -127,7 +127,7 @@ search:
         - name: regexp
           args: src=([^\s]+)
     imdb:
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       optional: true
       attribute: href
     category:

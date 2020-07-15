@@ -1,16 +1,18 @@
 ---
-site: pornolive
+id: pornolive
 name: PornoLive
 description: "PornoLive is a RUSSIAN Public Torrent Tracker for 3X"
 language: ru-ru
 type: public
 encoding: windows-1251
 links:
-  - http://pornolive.org/ # site does not support https ERR_CONNECTION_REFUSED
+  - https://pornolive.org/
+legacylinks:
+  - http://pornolive.org/
 
 caps:
   categorymappings:
-  - {id: XXX, cat: XXX, desc: "XXX"}
+    - {id: XXX, cat: XXX, desc: "XXX"}
 
   modes:
     search: [q]

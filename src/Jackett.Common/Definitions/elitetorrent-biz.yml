@@ -1,12 +1,12 @@
 ---
-site: elitetorrent-biz
+id: elitetorrent-biz
 name: EliteTorrent.biz
 description: "EliteTorrent.biz is a Public torrent site for TV, movies and documentaries"
 language: es-es
 type: public
 encoding: UTF-8
 links:
-  - https://www.elitetorrent.nl/
+  - https://www.elitetorrent.se/
 legacylinks:
   - https://www.elitetorrent.biz/
   - https://www.elitetorrent.io/
@@ -16,6 +16,11 @@ legacylinks:
   - https://www.elitetorrent.tv/
   - https://www.elitetorrent.li/
   - https://www.elitetorrent.bz/
+  - https://www.elitetorrent.nl/
+  - https://wwvv.elitetorrent.nl/
+  - https://wvvw.elitetorrent.nl/
+  - https://vvww.elitetorrent.nl/
+  - https://www.elitetorrent.to/
 
 caps:
   categories:
@@ -34,7 +39,7 @@ download:
   attribute: href
 
 search:
-# site returns just 30 results, attempt to fetch upto 90
+  # site returns just 30 results, attempt to fetch upto 90
   paths:
     - path: /
     - path: /page/2/
@@ -52,7 +57,7 @@ search:
   rows:
     selector: "#principal .miniboxs-ficha li"
     filters:
-    - name: andmatch
+      - name: andmatch
 
   fields:
     title:
@@ -77,16 +82,24 @@ search:
     banner:
       selector: .imagen img
       attribute: data-src
-    category:
+    category_movie:
       selector: .meta a
       attribute: href
       filters:
-        - name: split
-          args: ["/", 3]
+        - name: regexp
+          args: "^.*/(peliculas)/.*$"
+    category_tv:
+      selector: .meta a
+      attribute: href
+      filters:
+        - name: regexp
+          args: "^.*/(series)/.*$"
+    category:
+      text: "{{ if or .Result.category_movie .Result.category_tv }}{{ or .Result.category_movie .Result.category_tv }}{{ else }}{{ end }}"
     size:
       text: "0 B"
     size:
-    # size can be missing
+      # size can be missing
       optional: true
       selector: .voto1
       filters:

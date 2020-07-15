@@ -1,5 +1,5 @@
 ---
-site: ptmsg
+id: ptmsg
 name: PTMSG
 description: "PTMSG is a CHINESE Private Torrent Tracker for HD MOVIES / TV"
 language: zh-cn
@@ -50,6 +50,10 @@ settings:
     options:
       "desc": "desc"
       "asc": "asc"
+  - name: info_tpp
+    type: info
+    label: Results Per Page
+    default: For best results, change the <b>Torrents per page:</b> setting to <b>100</b> on your account profile.
 
 login:
   path: /index/login/takelogin

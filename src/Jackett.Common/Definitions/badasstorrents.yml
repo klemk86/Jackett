@@ -1,5 +1,5 @@
 ---
-site: badasstorrents
+id: badasstorrents
 name: Badass Torrents
 description: "Badass Torrents is a Public torrent site for MOVIES / TV / GENERAL"
 language: en-us
@@ -32,7 +32,7 @@ settings:
     label: Download link
     default: "magnet:?xt="
     options:
-      "/download/" : ".torrent"
+      "/download/": ".torrent"
       "magnet:?xt=": "magnet"
 
 download:

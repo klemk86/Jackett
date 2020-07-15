@@ -1,5 +1,5 @@
 ---
-site: p2pelite
+id: p2pelite
 name: P2PElite
 description: "P2PElite is a Private Torrent Tracker for EBOOKS / AUDIOBOOKS"
 language: en-us
@@ -131,7 +131,7 @@ search:
       attribute: onmouseover
       filters:
         - name: regexp
-          args: "src=\\\\\'(.+?)\\\\\'"
+          args: "src=\\\\'(.+?)\\\\'"
         - name: replace
           args: ["./pic/noposter.png", ""]
     files:

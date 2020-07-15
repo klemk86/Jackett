@@ -1,5 +1,5 @@
 ---
-site: torrentfunk
+id: torrentfunk
 name: TorrentFunk
 description: "TorrentFunk is a Public torrent index"
 language: en-us
@@ -9,10 +9,12 @@ followredirect: true
 links:
   - https://www.torrentfunk.com/
   - https://www.torrentfunk2.com/
-  - https://torrentfunk.unblockit.me/
+  - https://torrentfunk.unblockit.id/
 legacylinks:
   - https://torrentfunk.unblockit.pro/
   - https://torrentfunk.unblockit.one/
+  - https://torrentfunk.unblockit.me/
+  - https://torrentfunk.unblockit.pw/
 
 caps:
   categories:
@@ -74,7 +76,6 @@ search:
           args: "/tor/"
         - name: append
           args: ".torrent"
-      # two types of dates
     date:
       # Today
       # Yesterday

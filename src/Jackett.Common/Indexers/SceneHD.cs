@@ -26,7 +26,8 @@ namespace Jackett.Common.Indexers
         private new ConfigurationDataPasskey configData => (ConfigurationDataPasskey)base.configData;
 
         public SceneHD(IIndexerConfigurationService configService, WebClient c, Logger l, IProtectionService ps)
-            : base("SceneHD",
+            : base(id: "scenehd",
+                   name: "SceneHD",
                    description: "SceneHD is Private site for HD TV / MOVIES",
                    link: "https://scenehd.org/",
                    configService: configService,
@@ -100,6 +101,10 @@ namespace Jackett.Common.Indexers
                 var jsonContent = JArray.Parse(response.Content);
                 foreach (var item in jsonContent)
                 {
+                    var title = item.Value<string>("name");
+                    if (!query.IsImdbQuery && !query.MatchQueryStringAND(title))
+                        continue;
+
                     var id = item.Value<long>("id");
                     var comments = new Uri(CommentsUrl + "id=" + id);
                     var link = new Uri(DownloadUrl + "id=" + id + "&passkey=" + passkey);
@@ -108,7 +113,7 @@ namespace Jackett.Common.Indexers
 
                     var release = new ReleaseInfo
                     {
-                        Title = item.Value<string>("name"),
+                        Title = title,
                         Link = link,
                         Comments = comments,
                         Guid = comments,

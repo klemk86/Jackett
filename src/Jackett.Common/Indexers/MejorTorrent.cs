@@ -44,15 +44,16 @@ namespace Jackett.Common.Indexers
         };
 
         public MejorTorrent(IIndexerConfigurationService configService, WebClient w, Logger l, IProtectionService ps)
-            : base(name: "MejorTorrent",
-                description: "MejorTorrent - Hay veces que un torrent viene mejor! :)",
-                link: "https://www.mejortorrentt.net/",
-                caps: new TorznabCapabilities(),
-                configService: configService,
-                client: w,
-                logger: l,
-                p: ps,
-                configData: new ConfigurationData())
+            : base(id: "mejortorrent",
+                   name: "MejorTorrent",
+                   description: "MejorTorrent - Hay veces que un torrent viene mejor! :)",
+                   link: "https://www.mejortorrentt.net/",
+                   caps: new TorznabCapabilities(),
+                   configService: configService,
+                   client: w,
+                   logger: l,
+                   p: ps,
+                   configData: new ConfigurationData())
         {
             Encoding = Encoding.UTF8;
             Language = "es-es";
@@ -99,21 +100,22 @@ namespace Jackett.Common.Indexers
             var parser = new HtmlParser();
             var downloadUrl = link.ToString();
 
-            // Eg http://www.mejortorrentt.org/peli-descargar-torrent-11995-Harry-Potter-y-la-piedra-filosofal.html
+            // Eg https://www.mejortorrentt.net/peli-descargar-torrent-11995-Harry-Potter-y-la-piedra-filosofal.html
             var result = await RequestStringWithCookies(downloadUrl);
             if (result.Status != HttpStatusCode.OK)
                 throw new ExceptionWithConfigData(result.Content, configData);
             var dom = parser.ParseDocument(result.Content);
             downloadUrl = SiteLink + dom.QuerySelector("a[href*=\"sec=descargas\"]").GetAttribute("href");
 
-            // Eg http://www.mejortorrentt.org/secciones.php?sec=descargas&ap=contar&tabla=peliculas&id=11995&link_bajar=1
+            // Eg https://www.mejortorrentt.net/secciones.php?sec=descargas&ap=contar&tabla=peliculas&id=11995&link_bajar=1
             result = await RequestStringWithCookies(downloadUrl);
             if (result.Status != HttpStatusCode.OK)
                 throw new ExceptionWithConfigData(result.Content, configData);
             dom = parser.ParseDocument(result.Content);
-            downloadUrl = SiteLink + dom.QuerySelector("a[href*=\".torrent\"]").GetAttribute("href").TrimStart('/');
+            var onClickParts = dom.QuerySelector("a[onclick*=\"/torrent\"]").GetAttribute("onclick").Split('\'');
+            downloadUrl = $"{SiteLink}tor/{onClickParts[3]}/{onClickParts[5]}";
 
-            // Eg https://www.mejortorrentt.org/uploads/torrents/peliculas/Harry_Potter_1_y_la_Piedra_Filosofal_MicroHD_1080p.torrent
+            // Eg https://www.mejortorrentt.net/tor/peliculas/Harry_Potter_1_y_la_Piedra_Filosofal_MicroHD_1080p.torrent
             var content = await base.Download(new Uri(downloadUrl));
             return content;
         }

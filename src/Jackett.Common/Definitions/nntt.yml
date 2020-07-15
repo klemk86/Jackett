@@ -1,5 +1,5 @@
 ---
-site: nntt
+id: nntt
 name: NNTT
 description: "NNTT is a RUSSIAN Public Torrent Tracker for MOVIES / TV / GENERAL"
 language: ru-ru
@@ -7,11 +7,15 @@ type: public
 encoding: UTF-8
 links:
   - http://www.nntt.org/ # site does not support https ERR_CONNECTION_REFUSED
+legacylinks:
   - https://nntt.black-mirror.xyz/
   - https://nntt.unblocked.casa/
   - https://nntt.proxyportal.fun/
   - https://nntt.uk-unblock.xyz/
   - https://nntt.ind-unblock.xyz/
+  - https://nntt.unblocked.bar/ # .torrent downloads fail in Jackett but work in browser
+  - https://nntt.proxyportal.pw/ # .torrent downloads fail in Jackett but work in browser
+  - https://nntt.uk-unblock.pro/ # .torrent downloads fail in Jackett but work in browser
 
 caps:
   categorymappings:
@@ -721,7 +725,7 @@ search:
       # 12 янв 2019
       selector: td:nth-of-type(6) p
       filters:
-          # replace month abbreviations
+        # replace month abbreviations
         - name: replace
           args: ["янв", "Jan"]
         - name: replace

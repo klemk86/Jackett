@@ -1,5 +1,5 @@
 ---
-site: hdu
+id: hdu
 name: HDU
 description: "HDU is a CHINESE Private Torrent Tracker for HD MOVIES / TV / GENERAL"
 language: zh-cn
@@ -29,6 +29,18 @@ caps:
     movie-search: [q, imdbid]
     music-search: [q]
 
+settings:
+  - name: username
+    type: text
+    label: Username
+  - name: password
+    type: password
+    label: Password
+  - name: info_tpp
+    type: info
+    label: Results Per Page
+    default: For best results, change the <b>Torrents per page:</b> setting to <b>100</b> on your account profile.
+
 login:
   path: login.php
   method: form
@@ -40,8 +52,9 @@ login:
   inputs:
     username: "{{ .Config.username }}"
     password: "{{ .Config.password }}"
+    ssl: yes
+    trackerssl: ""
   error:
-    - selector: td.embedded:has(h2:contains("登录失败"))
     - selector: td.embedded:has(h2:contains("失败"))
   test:
     path: index.php

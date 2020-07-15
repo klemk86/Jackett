@@ -1,5 +1,5 @@
 ---
-site: ptfiles
+id: ptfiles
 name: PTFiles
 description: "PTFiles (PTF) is a Private site for TV / MOVIES / GENERAL"
 language: en-us
@@ -80,7 +80,7 @@ login:
 
 search:
   paths:
-  # https://ptfiles.net/browse.php?search=tt3612126&incldead=1&title=1
+    # https://ptfiles.net/browse.php?search=tt3612126&incldead=1&title=1
     - path: browse.php
   inputs:
     $raw: "{{ range .Categories }}c{{.}}=1&{{end}}"
@@ -116,7 +116,7 @@ search:
       selector: a.torrentlink
       attribute: href
     imdb:
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       optional: true
       attribute: href
     banner:

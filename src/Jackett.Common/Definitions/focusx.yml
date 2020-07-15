@@ -1,5 +1,5 @@
 ---
-site: focusx
+id: focusx
 name: FocusX
 description: "FocusX is a RUSSIAN Public torrent site for MOVIES and TV"
 language: ru-ru
@@ -7,6 +7,8 @@ type: public
 encoding: UTF-8
 links:
   - https://focu.sx/
+certificates:
+  - dbd67d579c0a9b5f3e354fdcfe41f13f78c44487 # expired 18 may 20
 
 caps:
   categorymappings:
@@ -180,7 +182,7 @@ settings:
 
 search:
   paths:
-  # https://focu.sx/tracker/search?freeleech=0&query=daredevil
+    # https://focu.sx/tracker/search?freeleech=0&query=daredevil
     - path: "tracker/{{ if .Keywords }}search?freeleech=0&query={{ .Keywords }}&{{else}}?{{end}}order={{ .Config.sort }}&direction={{ .Config.type }}"
       followredirect: true
 

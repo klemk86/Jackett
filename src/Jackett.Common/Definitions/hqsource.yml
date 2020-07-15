@@ -1,5 +1,5 @@
 ---
-site: hqsource
+id: hqsource
 name: HQSource
 description: "HQSource (HQS) is a POLISH Private Torrent Tracker for MOVIES / TV / GENERAL"
 language: pl-pl
@@ -52,7 +52,7 @@ login:
     username: "{{ .Config.username }}"
     password: "{{ .Config.password }}"
     pin: "{{ .Config.pin }}"
-    returnto:	"/"
+    returnto: /
   error:
     - selector: td.embedded:has(h2:contains("failed"))
     - selector: td.embedded:has(h2:contains("Error"))
@@ -104,7 +104,7 @@ search:
           args: "{{ .Result.description }}"
     imdb:
       optional: true
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
     grabs:
       selector: td:nth-child(6)
       filters:

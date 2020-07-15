@@ -1,5 +1,5 @@
 ---
-site: girotorrent
+id: girotorrent
 name: Girotorrent
 description: "Girotorrent is an ITALIAN Private site for TV / MOVIES / GENERAL"
 language: it-it
@@ -104,6 +104,10 @@ settings:
     options:
       "2": "desc"
       "1": "asc"
+  - name: info_tpp
+    type: info
+    label: Results Per Page
+    default: For best results, change the <b>Torrents per page:</b> setting to <b>100</b> on your account profile. The default is <i>15</i>.
 
 login:
   path: index.php?page=login
@@ -132,20 +136,6 @@ search:
   paths:
     # 15 results per page fetch 5 (site is slow, dont be greedy and fetch more)
     - path: index.php
-      inputs:
-        pages: 1
-    - path: index.php
-      inputs:
-        pages: 2
-    - path: index.php
-      inputs:
-        pages: 3
-    - path: index.php
-      inputs:
-        pages: 4
-    - path: index.php
-      inputs:
-        pages: 5
   inputs:
     search: "{{ .Keywords }}"
     category: "{{ range .Categories }}{{.}};{{end}}"

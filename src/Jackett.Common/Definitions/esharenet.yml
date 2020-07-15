@@ -1,5 +1,5 @@
 ---
-site: esharenet
+id: esharenet
 name: eShareNet
 description: "eShareNet is a Private Tracker for Brittish MOVIE / TV"
 language: en
@@ -83,9 +83,7 @@ login:
       selector: input[name="_token"]
       attribute: value
   error:
-    - selector: script[nonce]:contains("Error")
-      message:
-        selector: script[nonce]:contains("Error")
+    - selector: div#ERROR_COPY
 #    test:
 #      path: /
 #      selector: a[href$="/logout"]
@@ -99,7 +97,7 @@ ratio:
 
 search:
   paths:
-    - path: filterTorrents
+    - path: torrents/filter
   inputs:
     $raw: "{{ range .Categories }}categories[]={{.}}&{{end}}"
     search: "{{ if .Query.IMDBID }}{{else}}{{ .Keywords }}{{end}}"
@@ -124,7 +122,7 @@ search:
       attribute: href
       filters:
         - name: regexp
-          args: "/categories/.*?\\.(\\d+)"
+          args: "/categories/(\\d+)"
     title:
       selector: a.view-torrent
     download:
@@ -156,12 +154,12 @@ search:
           args: (\d+)
     imdb:
       optional: true
-      selector: a[href*="www.imdb.com/title/tt"]
+      selector: a[href*="imdb.com/title/tt"]
       attribute: href
     date:
       selector: time
       filters:
-          # translations for Turkish|Estonian|Danish|Italian|Polish|Norwegian|Portuguese|Czech|Russian|Romanian|Spanish|French|German|Bulgarian|Dutch|Chinese
+        # translations for Turkish|Estonian|Danish|Italian|Polish|Norwegian|Portuguese|Czech|Russian|Romanian|Spanish|French|German|Bulgarian|Dutch|Chinese
         - name: re_replace
           args: ["(?i)(önce|tagasi|geleden|fa|temu|siden|há|atrás|nazpět|назад|acum|în urmă|hace|il y a|vor|преди|前)", " ago"]
         - name: re_replace
@@ -208,4 +206,4 @@ search:
         i[class*="fa-globe text-green"]: 2 # Global Double Upload
         i[class*="fa-certificate text-pink"]: 2 # Featured Torrent
         "*": 1
-# UNIT3D 1.9.4
+# UNIT3D 2.4.0
