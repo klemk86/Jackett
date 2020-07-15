@@ -1,4 +1,12 @@
-﻿using AngleSharp.Dom;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading.Tasks;
+using AngleSharp.Dom;
 using AngleSharp.Html.Parser;
 using Jackett.Common.Models;
 using Jackett.Common.Models.IndexerConfig.Bespoke;
@@ -8,16 +16,10 @@ using Jackett.Common.Utils.Clients;
 using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json.Linq;
 using NLog;
-using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 namespace Jackett.Common.Indexers
 {
+    [ExcludeFromCodeCoverage]
     internal class AniDub : BaseWebIndexer
     {
         private static readonly Regex EpisodeInfoRegex = new Regex(@"\[(.*?)(?: \(.*?\))? из (.*?)\]$", RegexOptions.Compiled | RegexOptions.IgnoreCase);
@@ -83,8 +85,8 @@ namespace Jackett.Common.Indexers
 
         private ConfigurationDataAniDub Configuration
         {
-            get { return (ConfigurationDataAniDub)configData; }
-            set { configData = value; }
+            get => (ConfigurationDataAniDub)configData;
+            set => configData = value;
         }
 
         /// <summary>
@@ -134,18 +136,11 @@ namespace Jackett.Common.Indexers
             return await base.Download(link);
         }
 
+        // If the search string is empty use the latest releases
         protected override async Task<IEnumerable<ReleaseInfo>> PerformQuery(TorznabQuery query)
-        {
-            // If the search string is empty use the latest releases
-            if (query.IsTest || query.SearchTerm.IsNullOrEmptyOrWhitespace())
-            {
-                return await FetchNewReleases();
-            }
-            else
-            {
-                return await PerformSearch(query);
-            }
-        }
+            => query.IsTest || string.IsNullOrWhiteSpace(query.SearchTerm)
+            ? await FetchNewReleases()
+            : await PerformSearch(query);
 
         private async Task EnsureAuthorized()
         {
@@ -227,12 +222,11 @@ namespace Jackett.Common.Indexers
                     }
 
                     var seeders = GetReleaseSeeders(tabNode);
-
-
+                    var guid = new Uri(GetReleaseGuid(url, tabNode));
                     var release = new ReleaseInfo
                     {
                         Title = BuildReleaseTitle(baseTitle, tabNode),
-                        Guid = new Uri(GetReleaseGuid(url, tabNode)),
+                        Guid = guid,
                         Comments = uri,
                         Link = GetReleaseLink(tabNode),
                         PublishDate = date,
@@ -258,11 +252,8 @@ namespace Jackett.Common.Indexers
             return releases;
         }
 
-        private static string GetReleaseGuid(string url, IElement tabNode)
-        {
-            // Appending id to differentiate between different quality versions
-            return QueryHelpers.AddQueryString(url, "id", GetTorrentId(tabNode));
-        }
+        // Appending id to differentiate between different quality versions
+        private static string GetReleaseGuid(string url, IElement tabNode) => QueryHelpers.AddQueryString(url, "id", GetTorrentId(tabNode));
 
         private static int GetReleaseLeechers(IElement tabNode)
         {
@@ -323,7 +314,7 @@ namespace Jackett.Common.Indexers
             var releaseNode = tabNode.ParentElement;
             var quality = GetQuality(releaseNode);
 
-            if (!quality.IsNullOrEmptyOrWhitespace())
+            if (!string.IsNullOrWhiteSpace(quality))
             {
                 return $"{baseTitle} [{quality}]";
             }
@@ -334,7 +325,7 @@ namespace Jackett.Common.Indexers
         private static string GetQuality(IElement releaseNode)
         {
             // For some releases there's no block with quality
-            if (releaseNode.Id.IsNullOrEmptyOrWhitespace())
+            if (string.IsNullOrWhiteSpace(releaseNode.Id))
             {
                 return null;
             }
@@ -342,12 +333,18 @@ namespace Jackett.Common.Indexers
             var quality = releaseNode.Id.Trim();
             switch (quality.ToLowerInvariant())
             {
-                case "tv720": return "HDTV 720p";
-                case "tv1080": return "HDTV 1080p";
-                case "bd720": return "BDRip 720p";
-                case "bd1080": return "BDRip 1080p";
-                case "hwp": return "SDTV";
-                default: return quality.ToUpperInvariant();
+                case "tv720":
+                    return "HDTV 720p";
+                case "tv1080":
+                    return "HDTV 1080p";
+                case "bd720":
+                    return "BDRip 720p";
+                case "bd1080":
+                    return "BDRip 1080p";
+                case "hwp":
+                    return "SDTV";
+                default:
+                    return quality.ToUpperInvariant();
             }
         }
 
@@ -437,15 +434,9 @@ namespace Jackett.Common.Indexers
             return defaultSeason;
         }
 
-        private string StripRussianTitle(string title)
-        {
-            if (Configuration.StripRussianTitle.Value)
-            {
-                return StripRussianTitleRegex.Value.Replace(title, string.Empty);
-            }
-
-            return title;
-        }
+        private string StripRussianTitle(string title) => Configuration.StripRussianTitle.Value
+            ? StripRussianTitleRegex.Value.Replace(title, string.Empty)
+            : title;
 
         private static string FixBookInfo(string title) =>
             title.Replace("[Главы ", "[");
@@ -522,7 +513,7 @@ namespace Jackett.Common.Indexers
 
         private IEnumerable<int> ParseCategories(Uri showUri)
         {
-            Dictionary<string, string> categoriesMap = CategoriesMap;
+            var categoriesMap = CategoriesMap;
 
             var path = showUri.AbsolutePath.ToLowerInvariant();
 

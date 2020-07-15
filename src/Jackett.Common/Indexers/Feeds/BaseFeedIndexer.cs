@@ -1,16 +1,17 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading.Tasks;
 using Jackett.Common.Models;
 using Jackett.Common.Models.IndexerConfig;
 using Jackett.Common.Services.Interfaces;
-using Jackett.Common.Utils;
 using Jackett.Common.Utils.Clients;
 using Newtonsoft.Json.Linq;
 using NLog;
 
 namespace Jackett.Common.Indexers.Feeds
 {
+    [ExcludeFromCodeCoverage]
     public abstract class BaseFeedIndexer : BaseWebIndexer
     {
         protected abstract Uri FeedUri { get; }
@@ -32,7 +33,7 @@ namespace Jackett.Common.Indexers.Feeds
         protected override async Task<IEnumerable<ReleaseInfo>> PerformQuery(TorznabQuery query)
         {
             var requestUri = FeedUri.ToString();
-            if (!query.SearchTerm.IsNullOrEmptyOrWhitespace())
+            if (!string.IsNullOrWhiteSpace(query.SearchTerm))
                 requestUri = requestUri + "?q=" + query.SearchTerm;
             var request = new WebRequest
             {

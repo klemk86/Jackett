@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using Jackett.Common.Indexers.Abstract;
 using Jackett.Common.Models;
 using Jackett.Common.Services.Interfaces;
@@ -8,23 +9,26 @@ using NLog;
 
 namespace Jackett.Common.Indexers
 {
+    [ExcludeFromCodeCoverage]
     public class SecretCinema : GazelleTracker
     {
-        public SecretCinema(IIndexerConfigurationService configService, WebClient webClient, Logger logger, IProtectionService protectionService)
-            : base(name: "Secret Cinema",
-                desc: "A tracker for rare movies.",
-                link: "https://secret-cinema.pw/",
-                configService: configService,
-                logger: logger,
-                protectionService: protectionService,
-                webClient: webClient,
-                supportsFreeleechTokens: false // ratio free tracker
-                )
+        public SecretCinema(IIndexerConfigurationService configService, WebClient wc, Logger l, IProtectionService ps)
+            : base("Secret Cinema",
+                   description: "A tracker for rare movies.",
+                   link: "https://secret-cinema.pw/",
+                   caps: new TorznabCapabilities
+                   {
+                       SupportsImdbMovieSearch = true,
+                       SupportedMusicSearchParamsList = new List<string> { "q", "album", "artist", "label", "year" }
+                   },
+                   configService: configService,
+                   client: wc,
+                   logger: l,
+                   p: ps,
+                   supportsFreeleechTokens: false) // ratioless tracker
         {
             Language = "en-us";
             Type = "private";
-            TorznabCaps.SupportedMusicSearchParamsList = new List<string>() { "q", "album", "artist", "label", "year" };
-            TorznabCaps.SupportsImdbMovieSearch = true;
 
             AddCategoryMapping(1, TorznabCatType.Movies, "Movies");
             AddCategoryMapping(2, TorznabCatType.Audio, "Music");
